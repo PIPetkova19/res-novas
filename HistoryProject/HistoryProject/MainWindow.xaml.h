@@ -4,6 +4,7 @@
 
 namespace winrt::HistoryProject::implementation
 {
+    //Declare a doubly linked list
     struct Node
     {
         int day = 0;

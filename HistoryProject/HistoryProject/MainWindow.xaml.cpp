@@ -30,6 +30,7 @@ namespace winrt::HistoryProject::implementation
     int userDay, userMonth, userYear;
     Node* Head = new Node;
 
+    //Initialize the variables with the inputed data
     void MainWindow::AssignValues() 
     {
         userDay = stoi(to_string(txtDay().Text()));
@@ -37,6 +38,7 @@ namespace winrt::HistoryProject::implementation
         userYear = stoi(to_string(txtYear().Text()));
     }
 
+    //Add new node to the Head
     void MainWindow::prependNode(Node*& Head)
     {
         AssignValues();
@@ -47,6 +49,7 @@ namespace winrt::HistoryProject::implementation
         Head = newNode;
     }
 
+    //Add new node to the Tail
     void MainWindow::appendNode(Node* Head)
     {
         AssignValues();

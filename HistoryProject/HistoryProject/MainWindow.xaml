@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!-- Make background black -->
     <Grid Background = "Black">
+        <!-- Make grid take up the available remaining space -->
         <Grid.RowDefinitions>
             <RowDefinition Height = "*"/>
         </Grid.RowDefinitions>
@@ -17,6 +19,7 @@
             <ColumnDefinition Width = "*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Declare the textboxes where you input data -->
         <StackPanel Margin="30, 40, 0, 0">
             <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 30">
                 <TextBlock Text="Title"  VerticalAlignment="Center" Margin="10, 0, 0, 0"  Width="70" FontSize="18" FontFamily="Cambria" Foreground="White"/>
@@ -34,6 +37,7 @@
                 <TextBox x:Name="txtYear" VerticalAlignment="Center" Width="50" Background = "#131414" Foreground="White"/>
             </StackPanel>
 
+            <!-- Declare buttons that control the inputed data -->
             <StackPanel Orientation = "Horizontal" >
                 <Button Content="ADD" Width="100" Margin="0, 20, 0, 0" Background = "#131414" FontSize="20" FontFamily="Cambria" Foreground="White"/>
                 <Button Content="REMOVE" Width="100" Margin="20, 20, 0, 0" Background = "#131414" FontSize="20" FontFamily="Cambria" Foreground="White"/>
@@ -41,8 +45,9 @@
             </StackPanel>
         </StackPanel>
 
-
+        <!-- Display data in vertical stack -->
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
+            <!-- Make the user able to select only one item -->
             <ListView x:Name="listView1" Background="DarkSlateBlue" Width="500" CornerRadius="10" SelectionMode="Single" IsItemClickEnabled="True">
                 <ListViewHeaderItem  Content="Events" FontFamily="Cambria" Foreground="White"/>
                 <ListViewItem Content="Event1 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
