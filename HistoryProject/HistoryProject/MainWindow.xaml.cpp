@@ -30,11 +30,6 @@ namespace winrt::HistoryProject::implementation
     int userDay, userMonth, userYear;
     Node* Head = new Node;
 
-    void MainWindow::Button_Add(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
-    {
-        txtEvent().Text(to_hstring(Head->year));
-    }
-
     void MainWindow::AssignValues() 
     {
         userDay = stoi(to_string(txtDay().Text()));
