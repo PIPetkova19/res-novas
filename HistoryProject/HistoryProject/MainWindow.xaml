@@ -19,43 +19,43 @@
 
         <StackPanel Margin="30, 40, 0, 0">
             <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 30">
-                <TextBlock Text="Title"  VerticalAlignment="Center" Margin="10, 0, 0, 0"  Width="70"/>
-                <TextBox x:Name="txtTitle" VerticalAlignment="Center" Width = "400"/>
+                <TextBlock Text="Title"  VerticalAlignment="Center" Margin="10, 0, 0, 0"  Width="70" FontSize="18" FontFamily="Cambria" Foreground="White"/>
+                <TextBox x:Name="txtTitle" VerticalAlignment="Center" Width = "400" Background = "#131414" Foreground="White"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 15">
-                <TextBlock Text="Day" VerticalAlignment="Center" Margin="10, 0, 0, 0" Width="70"/>
-                <TextBox x:Name="txtDay" VerticalAlignment="Center" Margin="0, 0, 20, 0" Width="50"/>
+                <TextBlock Text="Day" VerticalAlignment="Center" Margin="10, 0, 0, 0" Width="70" FontSize="18" FontFamily="Cambria" Foreground="White"/>
+                <TextBox x:Name="txtDay" VerticalAlignment="Center" Margin="0, 0, 20, 0" Width="50" Background = "#131414" Foreground="White"/>
 
-                <TextBlock Text="Month" VerticalAlignment="Center" Margin="10, 0, 0, 0" Width="70"/>
-                <TextBox x:Name="txtMonth" VerticalAlignment="Center" Margin="0, 0, 20, 0" Width="20"/>
+                <TextBlock Text="Month" VerticalAlignment="Center" Margin="10, 0, 0, 0" Width="70" FontSize="18" FontFamily="Cambria" Foreground="White"/>
+                <TextBox x:Name="txtMonth" VerticalAlignment="Center" Margin="0, 0, 20, 0" Width="20" Background = "#131414" Foreground="White"/>
 
-                <TextBlock Text="Year" VerticalAlignment="Center" Margin="10, 0, 0, 0" Width="70"/>
-                <TextBox x:Name="txtYear" VerticalAlignment="Center" Width="50"/>
+                <TextBlock Text="Year" VerticalAlignment="Center" Margin="10, 0, 0, 0" Width="70" FontSize="18" FontFamily="Cambria" Foreground="White"/>
+                <TextBox x:Name="txtYear" VerticalAlignment="Center" Width="50" Background = "#131414" Foreground="White"/>
             </StackPanel>
 
-            <StackPanel Orientation = "Horizontal">
-                <Button Content="ADD" Width="100" Margin="0, 20, 0, 0" />
-                <Button Content="REMOVE" Width="100" Margin="20, 20, 0, 0"/>
-                <Button Content="MODIFY" Width="100" Margin="20, 20, 0, 0"/>
+            <StackPanel Orientation = "Horizontal" >
+                <Button Content="ADD" Width="100" Margin="0, 20, 0, 0" Background = "#131414" FontSize="20" FontFamily="Cambria" Foreground="White"/>
+                <Button Content="REMOVE" Width="100" Margin="20, 20, 0, 0" Background = "#131414" FontSize="20" FontFamily="Cambria" Foreground="White"/>
+                <Button Content="MODIFY" Width="100" Margin="20, 20, 0, 0" Background = "#131414" FontSize="20" FontFamily="Cambria" Foreground="White"/>
             </StackPanel>
         </StackPanel>
 
 
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
             <ListView x:Name="listView1" Background="DarkSlateBlue" Width="500" CornerRadius="10" SelectionMode="Single" IsItemClickEnabled="True">
-                <ListViewHeaderItem Content="Events" />
-                <ListViewItem Content="Event1 - 1.01.2022" />
-                <ListViewItem Content="Event2 - 1.01.2022" />
-                <ListViewItem Content="Event3 - 1.01.2022" />
-                <ListViewItem Content="Event4 - 1.01.2022" />
-                <ListViewItem Content="Event5 - 1.01.2022" />
-                <ListViewItem Content="Event6 - 1.01.2022" />
-                <ListViewItem Content="Event7 - 1.01.2022" />
-                <ListViewItem Content="Event8 - 1.01.2022" />
-                <ListViewItem Content="Event9 - 1.01.2022" />
-                <ListViewItem Content="Event10 - 1.01.2022" />
-                <ListViewItem Content="Event11 - 1.01.2022" />
+                <ListViewHeaderItem  Content="Events" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event1 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event2 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event3 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event4 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event5 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event6 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event7 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event8 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event9 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event10 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
+                <ListViewItem Content="Event11 - 1.01.2022" FontFamily="Cambria" Foreground="White"/>
             </ListView>
         </StackPanel>
 

@@ -7,7 +7,7 @@ namespace winrt::HistoryProject::implementation
     struct Node
     {
         int day = 0;
-        int month = 0;
+        int month = 0; 
         int year = 0;
 
         Node* prev = NULL;
