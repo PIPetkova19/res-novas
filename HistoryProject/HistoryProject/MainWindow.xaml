@@ -7,7 +7,43 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid Background = "Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "100"/>
+            <RowDefinition Height = "40"/>
+            <RowDefinition Height = "80"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column = "0" Grid.Row = "0" Orientation = "Horizontal">
+            <TextBlock Text = "Title"  VerticalAlignment = "Center" Margin="10, 0, 0, 0"  Width = "70"/>
+            <TextBox x:Name="txtTitle" VerticalAlignment = "Center" Width = "400"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column = "0" Grid.Row = "1" Orientation = "Horizontal">
+            <TextBlock Text = "Day" VerticalAlignment = "Center" Margin="10, 0, 0, 0" Width = "70"/>
+            <TextBox x:Name="txtDay" VerticalAlignment = "Center" Margin="0, 0, 20, 0" Width = "50"/>
+
+            <TextBlock Text = "Month" VerticalAlignment = "Center" Margin="10, 0, 0, 0" Width = "70"/>
+            <TextBox x:Name="txtMont" VerticalAlignment = "Center" Margin="0, 0, 20, 0" Width = "20"/>
+
+            <TextBlock Text = "Year" VerticalAlignment = "Center" Margin="10, 0, 0, 0" Width = "70"/>
+            <TextBox x:Name="txtYear" VerticalAlignment = "Center" Width = "50"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column = "0" Grid.Row = "3" Orientation = "Horizontal">
+            <Button Content="ADD" Width="100" Margin="20, 20, 0, 0" Click="Button_Add"/>
+            <Button Content="REMOVE" Width="100" Margin="20, 20, 0, 0"/>
+            <Button Content="MODIFY" Width="100" Margin="20, 20, 0, 0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+            <TextBlock x:Name="txtEvent"  Text="Nothing" VerticalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+    
 </Window>

@@ -27,8 +27,8 @@ namespace winrt::HistoryProject::implementation
         throw hresult_not_implemented();
     }
 
-    void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
+    void MainWindow::Button_Add(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)
     {
-        myButton().Content(box_value(L"Clicked"));
+        txtEvent().Text(txtTitle().Text());
     }
 }
