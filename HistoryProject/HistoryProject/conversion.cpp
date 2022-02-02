@@ -37,7 +37,7 @@ long long int  binToGraysCode(int dec) {
 }
 
 //Use gray code as bin and convert it to dec
-void grayCodeConversion(long long temp) {
+int grayCodeConversion(long long temp) {
     long long num = binToGraysCode(temp);
     int sum = 0, i = 0;
     while (num)
@@ -46,11 +46,31 @@ void grayCodeConversion(long long temp) {
         i++;
         num = num / 10;
     }
-    cout << sum;
+    return sum;
 }
+
+
+
+//Sort the elements by their gray code
+void sorting(Node* n)
+{
+    while (n != NULL)
+    {
+        int sum = n->day + n->month + n->year;
+        n = n->next;
+        int sum1 = n->day + n->month + n->year;
+        if (grayCodeConversion(sum) > grayCodeConversion(sum1))
+        {
+            n=n->prev;
+            cout << n->day<<" "<< n->month<<" "<< n->year;
+        }
+        else {
+            cout << n->day << " " << n->month << " " << n->year;
+        }
+    }
+}
+
 int main() {
-    int dec;
-    cin >> dec;
-    grayCodeConversion(dec);
+  
 }
 */
