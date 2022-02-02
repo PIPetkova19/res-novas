@@ -35,7 +35,6 @@ management of historical events, using linked lists. <br><br>
 <img src = "https://logodownload.org/wp-content/uploads/2018/10/word-logo-1-1.png" width= "25"> Word <br>
 <img src = "https://upload.wikimedia.org/wikipedia/commons/3/3b/Microsoft_PowerPoint_Logo.png" width ="25"> PowerPoint <br> 
 <img src = "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/119_Excel_logo_logos-512.png" width = "25"> Excel <br>
-WinRT (Framework)
 
 
 ##  Installation
