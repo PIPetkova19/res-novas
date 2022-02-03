@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "LinkedList.h"
 
 void menu()
 {
@@ -98,6 +99,8 @@ void menu()
 				Beep(493, 100);
 				Beep(523, 150);
 				choose = false;
+
+				linkedList::addNode(Head);
 			}
 			else if (arrow == 1)
 			{

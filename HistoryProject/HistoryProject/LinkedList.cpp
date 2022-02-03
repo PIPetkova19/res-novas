@@ -23,6 +23,31 @@ void linkedList::appendNode(Node*& Head, string userTitle, int userDay, int user
 	}
 }
 
+void linkedList::addNode(Node*& Head)
+{
+	string userTitle;
+	int userDay, userMonth, userYear;
+
+	cin >> userTitle;
+	cin >> userDay >> userMonth >> userYear;
+
+	Node* temp = Head;
+
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	if (userYear > temp->year)
+	{
+		linkedList::appendNode(Head, userTitle, userDay, userMonth, userYear);
+	}
+	else
+	{
+		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
+	}
+}
+
 void linkedList::printNodes(Node* Head)
 {
 	while (Head != NULL)
