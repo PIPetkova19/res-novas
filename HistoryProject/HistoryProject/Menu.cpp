@@ -1,8 +1,4 @@
-#include <iostream>
-#include <windows.h>
-#include <string>
-
-using namespace std;
+#include "Menu.h"
 
 void menu()
 {
@@ -118,9 +114,4 @@ void menu()
 		}
 		system("cls");
 	}
-}
-
-int main()
-{
-	menu();
 }
