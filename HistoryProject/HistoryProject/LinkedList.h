@@ -23,3 +23,8 @@ namespace linkedList
 	void appendNode(Node*&, string, int, int, int);
 	void printNodes(Node*);
 }
+
+namespace fileFunctions
+{
+	void writeToFile(Node*);
+}

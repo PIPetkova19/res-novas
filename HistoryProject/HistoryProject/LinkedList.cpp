@@ -31,3 +31,14 @@ void linkedList::printNodes(Node* Head)
 		Head = Head->next;
 	}
 }
+
+void fileFunctions::writeToFile(Node* Head)
+{
+	ofstream MyFile("dateInfo.txt");
+
+	while (Head != NULL)
+	{
+		MyFile << Head->title << " - " << Head->day << "/" << Head->month << "/" << Head->year << endl;
+		Head = Head->next;
+	}
+}

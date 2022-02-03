@@ -8,4 +8,6 @@ int main()
 
     linkedList::appendNode(Head, "test2", 20, 20, 2000);
     linkedList::printNodes(Head);
+
+    fileFunctions::writeToFile(Head);
 }
