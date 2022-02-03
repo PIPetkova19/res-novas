@@ -1,12 +1,9 @@
 #include "LinkedList.h"
 #include "Menu.h"
 
-Node* Head = new Node{ "example", 10, 10, 2000, NULL, NULL };
+Node* Head = new Node;
 
 int main()
 {
-    
     menu();
-
-    fileFunctions::writeToFile(Head);
 }
