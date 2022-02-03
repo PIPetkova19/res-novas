@@ -105,6 +105,8 @@ void menu()
 			else if (arrow == 1)
 			{
 				choose = false;
+
+				linkedList::removeNode(Head);
 			}
 			else if (arrow == 2)
 			{

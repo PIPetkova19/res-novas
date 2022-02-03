@@ -25,6 +25,8 @@ namespace linkedList
 	void prependNode(Node*&, string, int, int, int);
 	void appendNode(Node*&, string, int, int, int);
 	void addNode(Node*&);
+	void removeGivenNode(Node*&, string, int, int, int);
+	void removeNode(Node*&);
 	void printNodes(Node*);
 }
 

@@ -65,6 +65,44 @@ void linkedList::addNode(Node*& Head)
     fileFunctions::writeToFile(Head);
 }
 
+void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
+{
+	Node* temp = Head;
+	Node* previous = NULL;
+
+	if(temp != NULL && temp->title == keyTitle && temp->day == keyDay &&temp->month == keyMonth && temp->year == keyYear)
+	{
+		Head = temp->next;
+		delete temp;
+		return;
+	}
+	else
+	{
+		while(temp != NULL && temp->title != keyTitle && temp->day != keyDay &&temp->month != keyMonth && temp->year != keyYear)
+		{
+			previous = temp;
+			temp = temp->next;
+		}
+
+		if(temp == NULL)
+			return;
+		
+		previous->next = temp->next;
+		delete temp;
+	}
+}
+
+void linkedList::removeNode(Node*& Head)
+{
+	string keyTitle;
+	int keyDay, keyMonth, keyYear;
+
+	getline(cin, keyTitle, '\n');
+	cin >> keyDay >> keyMonth >> keyYear;
+
+	linkedList::removeGivenNode(Head, keyTitle, keyDay, keyMonth, keyYear);
+}
+
 void linkedList::printNodes(Node* Head)
 {
 	while (Head != NULL)
