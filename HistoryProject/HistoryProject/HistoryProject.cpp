@@ -6,4 +6,5 @@ Node* Head = new Node;
 int main()
 {
     menu();
+    fileFunctions::writeToFile(Head);
 }

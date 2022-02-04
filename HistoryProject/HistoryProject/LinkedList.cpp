@@ -62,7 +62,6 @@ void linkedList::addNode(Node*& Head)
 	{
 		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
 	}
-    fileFunctions::writeToFile(Head);
 }
 
 void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
