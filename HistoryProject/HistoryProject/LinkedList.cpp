@@ -89,9 +89,9 @@ void linkedList::addNode(Node*& Head)
 void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
 {
 	Node* temp = Head;
-	Node* previous = NULL;
+	int counter = 0;
 
-	if(temp != NULL && temp->title == keyTitle && temp->day == keyDay &&temp->month == keyMonth && temp->year == keyYear)
+	if(temp != NULL && temp->title == keyTitle && temp->day == keyDay && temp->month == keyMonth && temp->year == keyYear)
 	{
 		Head = temp->next;
 		delete temp;
@@ -101,14 +101,19 @@ void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int k
 	{
 		while(temp != NULL && temp->title != keyTitle && temp->day != keyDay &&temp->month != keyMonth && temp->year != keyYear)
 		{
-			previous = temp;
 			temp = temp->next;
+			counter++;
 		}
 
 		if(temp == NULL)
 			return;
 		
-		previous->next = temp->next;
+		if (!counter)
+		{
+			Head = Head->next;
+			delete temp;
+			return;
+		}
 		delete temp;
 	}
 }

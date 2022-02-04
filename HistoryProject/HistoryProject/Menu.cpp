@@ -67,7 +67,7 @@ void menu()
 			cout << " -->" << '\t' << sentances[3] << "\t<--" << endl;
 		}
 
-		system("pasue>nul");
+		system("pause>nul");
 
 		if (GetAsyncKeyState(VK_UP))
 		{
@@ -110,6 +110,7 @@ void menu()
 			}
 			else if (arrow == 1)
 			{
+				linkedList::removeNode(Head);
 				choose = false;
 			}
 			else if (arrow == 2)
@@ -176,7 +177,7 @@ void dynamicMenu(Node* Head)
 			cout << '\t' << events[j] << endl;
 		}
 
-		system("pasue>nul");
+		system("pause>nul");
 
 		if (GetAsyncKeyState(VK_UP))
 		{
@@ -229,7 +230,7 @@ void load()
 
 	cout << endl << endl << " ALL DONE. PRESS ENTER TO CONTINUE";
 
-	system("pasue>nul");
+	system("pause>nul");
 
 	system("cls");
 
