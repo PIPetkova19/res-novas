@@ -51,9 +51,9 @@ void linkedList::addNode(Node*& Head)
 
 	cout << endl;
 
-	cout << " Enter event's Year:" << endl << "   > ";
+	cout << " Enter event's Day:" << endl << "   > ";
 
-	cin >> userYear;
+	cin >> userDay;
 
 	cout << endl;
 
@@ -63,9 +63,9 @@ void linkedList::addNode(Node*& Head)
 
 	cout << endl;
 
-	cout << " Enter event's Day:" << endl << "   > ";
+	cout << " Enter event's Year:" << endl << "   > ";
 
-	cin >> userDay;
+	cin >> userYear;
 
 	Node* temp = Head;
 
