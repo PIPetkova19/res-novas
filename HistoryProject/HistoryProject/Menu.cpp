@@ -1,10 +1,13 @@
 #include "Menu.h"
 #include "LinkedList.h"
 
+
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+void dynamicMenu(Node* Head);
+
 void menu()
 {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
 	string sentances[4] = { "ADD ELEMENT" , "DELETE ELEMENT", "MODIFY ELEMENT", "REVIEW LIST" };
 	int arrow = 0;
 
@@ -64,7 +67,7 @@ void menu()
 			cout << " -->" << '\t' << sentances[3] << "\t<--" << endl;
 		}
 
-		system("pause>nul");
+		system("pasue>nul");
 
 		if (GetAsyncKeyState(VK_UP))
 		{
@@ -98,6 +101,9 @@ void menu()
 				Beep(440, 100);
 				Beep(493, 100);
 				Beep(523, 150);
+
+				system("cls");
+
 				choose = false;
 
 				linkedList::addNode(Head);
@@ -105,8 +111,6 @@ void menu()
 			else if (arrow == 1)
 			{
 				choose = false;
-
-				linkedList::removeNode(Head);
 			}
 			else if (arrow == 2)
 			{
@@ -115,8 +119,119 @@ void menu()
 			else if (arrow == 3)
 			{
 				choose = false;
+
+				system("cls");
+
+				dynamicMenu(Head);
+
+				menu();
 			}
 		}
 		system("cls");
 	}
+}
+
+void dynamicMenu(Node* Head)
+{
+	int counter = 0;
+
+	Node* tempCounter = Head;
+
+	while (tempCounter != NULL)
+	{
+		tempCounter = tempCounter->next;
+		counter++;
+	}
+
+	string* events = new string[counter];
+
+	int eventsCounter = 0;
+
+	Node* temp = Head;
+
+	while (temp != NULL)
+	{
+		string day = to_string(temp->day);
+		string month = to_string(temp->month);
+		string year = to_string(temp->year);
+		events[eventsCounter] = temp->title + "-" + day + "/" + month + "/" + year;
+		temp = temp->next;
+		eventsCounter++;
+	}
+
+	int arrow = 0;
+
+	while (true)
+	{
+
+		for (int j = 0; j < arrow; j++)
+		{
+			cout << '\t' << events[j] << endl;
+		}
+
+		cout << " " << " -->" << '\t' << events[(size_t)arrow] << "\t<--" << endl;
+
+		for (int j = arrow + 1; j < eventsCounter; j++)
+		{
+			cout << '\t' << events[j] << endl;
+		}
+
+		system("pasue>nul");
+
+		if (GetAsyncKeyState(VK_UP))
+		{
+			if (arrow == 0)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				Beep(440, 50);
+				arrow--;
+			}
+		}
+		if (GetAsyncKeyState(VK_DOWN))
+		{
+			if (arrow == eventsCounter - 1)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				arrow++;
+				Beep(440, 50);
+			}
+		}
+
+		if (GetAsyncKeyState(VK_SPACE))
+		{
+			break;
+		}
+
+		system("cls");
+	}
+
+	system("cls");
+}
+
+void load()
+{
+	cout << endl << " ";
+
+	for (int r = 1; r <= 5; r++)
+	{
+		SetConsoleTextAttribute(hConsole, 2);
+		Beep(220, 200);
+		std::cout << (char)219u << " ";
+	}
+
+	SetConsoleTextAttribute(hConsole, 15);
+
+	cout << endl << endl << " ALL DONE. PRESS ENTER TO CONTINUE";
+
+	system("pasue>nul");
+
+	system("cls");
+
+	menu();
 }

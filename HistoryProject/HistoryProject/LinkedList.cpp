@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include "Menu.h"
 
 void linkedList::prependNode(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
 {
@@ -44,8 +45,27 @@ void linkedList::addNode(Node*& Head)
 	string userTitle;
 	int userDay, userMonth, userYear;
 
-	getline(cin, userTitle, '\n');
-	cin >> userDay >> userMonth >> userYear;
+	cout << " Enter event's Title:" << endl << "   > ";
+
+	cin >> userTitle;
+
+	cout << endl;
+
+	cout << " Enter event's Year:" << endl << "   > ";
+
+	cin >> userYear;
+
+	cout << endl;
+
+	cout << " Enter event's Month:" << endl << "   > ";
+
+	cin >> userMonth;
+
+	cout << endl;
+
+	cout << " Enter event's Day:" << endl << "   > ";
+
+	cin >> userDay;
 
 	Node* temp = Head;
 
@@ -62,6 +82,8 @@ void linkedList::addNode(Node*& Head)
 	{
 		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
 	}
+
+	load();
 }
 
 void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
