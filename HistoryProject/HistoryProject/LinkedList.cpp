@@ -1,6 +1,8 @@
 #include "LinkedList.h"
 #include "Menu.h"
 
+HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+
 void linkedList::prependNode(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	if(Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
@@ -62,8 +64,12 @@ int checkDay(int userMonth, int userYear)
 				|| (userMonth == 12) && (userDay > 31)
 				|| (userDay < 1))
 		{
+			//Change the color to gray
+			SetConsoleTextAttribute(console, 8);
 			cout << endl << "        Incorrect input" << endl << "        > ";
 			cin >> userDay;
+			//Change to default color
+			SetConsoleTextAttribute(console, 15);
 		}
 		else {
 			break;
@@ -81,8 +87,12 @@ int checkYear()
 	while (true) {
 		if (userYear > 2022 || (userYear < 1))
 		{
+			//Change the color to gray
+			SetConsoleTextAttribute(console, 8);
 			cout << endl << "        Incorrect input" << endl << "        > ";
 			cin >> userYear;
+			//Change to default color
+			SetConsoleTextAttribute(console, 15);
 		}
 		else {
 			break;
@@ -99,8 +109,12 @@ int checkMonth()
 	while (true) {
 		if (userMonth > 12 || (userMonth < 1))
 		{
-			cout << endl << "        Incorrect input" << endl << "        > ";
+			//Change the color to gray
+			SetConsoleTextAttribute(console, 8);
+			cout << endl << "        Incorrect input" << endl << "        > ";		
 			cin >> userMonth;
+			//Change to default color
+			SetConsoleTextAttribute(console, 15);
 		}
 		else {
 			break;
