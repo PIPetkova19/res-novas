@@ -34,3 +34,6 @@ namespace fileFunctions
 {
 	void writeToFile(Node*);
 }
+int checkMonth();
+int checkYear();
+int checkDay(int userMonth, int userYear);

@@ -40,32 +40,96 @@ void linkedList::appendNode(Node*& Head, string userTitle, int userDay, int user
 	}
 }
 
+//Checks if the date exists
+int checkDay(int userMonth, int userYear)
+{
+	int userDay;
+	cin >> userDay;
+	while (true) {
+		//Checks if a year is leap or not (the first 2 lines)
+		if (((userYear % 4 != 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (userDay > 28))
+			|| ((userYear % 4 == 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (userDay > 29))
+			|| (userMonth == 1) && (userDay > 31)
+			|| (userMonth == 3) && (userDay > 31)
+			|| (userMonth == 4) && (userDay > 30)
+			|| (userMonth == 5) && (userDay > 31)
+			|| (userMonth == 6) && (userDay > 30)
+			|| (userMonth == 7) && (userDay > 31)
+			|| (userMonth == 8) && (userDay > 31)
+				|| (userMonth == 9) && (userDay > 30)
+				|| (userMonth == 10) && (userDay > 31)
+				|| (userMonth == 11) && (userDay > 30)
+				|| (userMonth == 12) && (userDay > 31)
+				|| (userDay < 1))
+		{
+			cout << endl << "        Incorrect input" << endl << "        > ";
+			cin >> userDay;
+		}
+		else {
+			break;
+		}
+	}
+	return userDay;
+
+}
+
+//Checks if the date exists
+int checkYear()
+{
+	int userYear;
+	cin >> userYear;
+	while (true) {
+		if (userYear > 2022 || (userYear < 1))
+		{
+			cout << endl << "        Incorrect input" << endl << "        > ";
+			cin >> userYear;
+		}
+		else {
+			break;
+		}
+	}
+	return userYear;
+}
+
+//Checks if the date exists
+int checkMonth()
+{
+	int userMonth;
+	cin >> userMonth;
+	while (true) {
+		if (userMonth > 12 || (userMonth < 1))
+		{
+			cout << endl << "        Incorrect input" << endl << "        > ";
+			cin >> userMonth;
+		}
+		else {
+			break;
+		}
+	}
+	return userMonth;
+}
+
 void linkedList::addNode(Node*& Head)
 {
 	string userTitle;
 	int userDay, userMonth, userYear;
 
 	cout << " Enter event's Title:" << endl << "   > ";
-
 	cin >> userTitle;
-
-	cout << endl;
-
-	cout << " Enter event's Day:" << endl << "   > ";
-
-	cin >> userDay;
-
-	cout << endl;
-
-	cout << " Enter event's Month:" << endl << "   > ";
-
-	cin >> userMonth;
-
 	cout << endl;
 
 	cout << " Enter event's Year:" << endl << "   > ";
+	userYear = checkYear();
+	cout << endl;
 
-	cin >> userYear;
+	cout << " Enter event's Month:" << endl << "   > ";
+	userMonth = checkMonth();
+	cout << endl;
+
+	cout << " Enter event's Day:" << endl << "   > ";
+	userDay = checkDay(userMonth, userYear);
+	cout << endl;
+
 
 	Node* temp = Head;
 
