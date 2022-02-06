@@ -27,14 +27,16 @@ namespace linkedList
 	void addNode(Node*&);
 	void removeGivenNode(Node*&, string, int, int, int);
 	void removeNode(Node*&);
+	void modifyNode(Node*&);
+	void modifyGivenNode(Node*&, string, int, int, int);
 	void printNodes(Node*);
-}
-
-namespace fileFunctions
-{
-	void writeToFile(Node*);
 }
 
 int checkMonth();
 int checkYear();
 int checkDay(int userMonth, int userYear);
+
+namespace fileFunctions
+{
+	void writeToFile(Node*);
+}
