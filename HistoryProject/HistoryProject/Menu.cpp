@@ -5,6 +5,7 @@
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 void dynamicMenu(Node* Head);
+void removeMenu(Node* Head);
 
 void menu()
 {
@@ -104,13 +105,16 @@ void menu()
 
 				system("cls");
 
-				choose = false;
-
 				linkedList::addNode(Head);
+
+				choose = false;
 			}
 			else if (arrow == 1)
 			{
-				linkedList::removeNode(Head);
+				system("cls");
+
+				removeMenu(Head);
+
 				choose = false;
 			}
 			else if (arrow == 2)
@@ -132,31 +136,94 @@ void menu()
 	}
 }
 
-void dynamicMenu(Node* Head)
+void removeMenu(Node* Head)
 {
-	int counter = 0;
+	int eventsCounter = 0;
 
 	Node* tempCounter = Head;
 
 	while (tempCounter != NULL)
 	{
 		tempCounter = tempCounter->next;
-		counter++;
+		eventsCounter++;
 	}
 
-	string* events = new string[counter];
+	int arrow = 0;
 
+	Node* tempSelect = Head;
+
+	while (true)
+	{
+		Node* temp = Head;
+
+		for (int j = 0; j < arrow; j++)
+		{
+			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+			temp = temp->next;
+		}
+
+		cout << " " << " -->" << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+
+		temp = temp->next;
+
+		for (int j = arrow + 1; j < eventsCounter; j++)
+		{
+			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+			temp = temp->next;
+		}
+
+		system("pause>nul");
+
+		if (GetAsyncKeyState(VK_UP))
+		{
+			if (arrow == 0)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				Beep(440, 50);
+				arrow--;
+				tempSelect = tempSelect->prev;
+			}
+		}
+		if (GetAsyncKeyState(VK_DOWN))
+		{
+			if (arrow == eventsCounter - 1)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				Beep(440, 50);
+				arrow++;
+				tempSelect = tempSelect->next;
+			}
+		}
+
+		if (GetAsyncKeyState(VK_SPACE))
+		{
+			linkedList::removeNode(tempSelect);
+			break;
+		}
+
+		system("cls");
+	}
+
+	system("cls");
+}
+
+void dynamicMenu(Node* Head)
+{
 	int eventsCounter = 0;
 
-	Node* temp = Head;
+	Node* tempCounter = Head;
 
-	while (temp != NULL)
+	while (tempCounter != NULL)
 	{
-		string day = to_string(temp->day);
-		string month = to_string(temp->month);
-		string year = to_string(temp->year);
-		events[eventsCounter] = temp->title + "-" + day + "/" + month + "/" + year;
-		temp = temp->next;
+		tempCounter = tempCounter->next;
 		eventsCounter++;
 	}
 
@@ -164,17 +231,24 @@ void dynamicMenu(Node* Head)
 
 	while (true)
 	{
+		Node* temp = Head;
 
 		for (int j = 0; j < arrow; j++)
 		{
-			cout << '\t' << events[j] << endl;
+			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+			temp = temp->next;
 		}
 
-		cout << " " << " -->" << '\t' << events[(size_t)arrow] << "\t<--" << endl;
+		cout << " " << " -->" << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+
+		temp = temp->next;
 
 		for (int j = arrow + 1; j < eventsCounter; j++)
 		{
-			cout << '\t' << events[j] << endl;
+			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+			temp = temp->next;
 		}
 
 		system("pause>nul");
@@ -199,8 +273,8 @@ void dynamicMenu(Node* Head)
 			}
 			else
 			{
-				arrow++;
 				Beep(440, 50);
+				arrow++;
 			}
 		}
 
