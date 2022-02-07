@@ -166,82 +166,110 @@ void linkedList::printNodes(Node* Head)
 //Checks if the date exists
 int checkDay(int userMonth, int userYear)
 {
-	int userDay;
-	cin >> userDay;
+	string userDay;
+
 	while (true) {
-		//Checks if a year is leap or not (the first 2 lines)
-		if (((userYear % 4 != 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (userDay > 28))
-			|| ((userYear % 4 == 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (userDay > 29))
-			|| (userMonth == 1) && (userDay > 31)
-			|| (userMonth == 3) && (userDay > 31)
-			|| (userMonth == 4) && (userDay > 30)
-			|| (userMonth == 5) && (userDay > 31)
-			|| (userMonth == 6) && (userDay > 30)
-			|| (userMonth == 7) && (userDay > 31)
-			|| (userMonth == 8) && (userDay > 31)
-			|| (userMonth == 9) && (userDay > 30)
-			|| (userMonth == 10) && (userDay > 31)
-			|| (userMonth == 11) && (userDay > 30)
-			|| (userMonth == 12) && (userDay > 31)
-			|| (userDay < 1))
+		//Check if the day is invalid of if there is a char
+		try {
+			cin >> userDay;
+			//Checks if a year is leap or not (the first 2 lines)
+			if (((userYear % 4 != 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (stoi(userDay) > 28))
+				|| ((userYear % 4 == 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (stoi(userDay) > 29))
+				|| (userMonth == 1) && (stoi(userDay) > 31)
+				|| (userMonth == 3) && (stoi(userDay) > 31)
+				|| (userMonth == 4) && (stoi(userDay) > 30)
+				|| (userMonth == 5) && (stoi(userDay) > 31)
+				|| (userMonth == 6) && (stoi(userDay) > 30)
+				|| (userMonth == 7) && (stoi(userDay) > 31)
+				|| (userMonth == 8) && (stoi(userDay) > 31)
+				|| (userMonth == 9) && (stoi(userDay) > 30)
+				|| (userMonth == 10) && (stoi(userDay) > 31)
+				|| (userMonth == 11) && (stoi(userDay) > 30)
+				|| (userMonth == 12) && (stoi(userDay) > 31)
+				|| (stoi(userDay) < 1)
+				|| ((userDay >= "A") && (userDay <= "z")))
+			{
+				throw 1;
+			}
+
+			else {
+				break;
+			}
+		}
+
+		catch (...)
 		{
 			//Change the color to gray
 			SetConsoleTextAttribute(console, 8);
 			cout << endl << "        Incorrect input" << endl << "        > ";
-			cin >> userDay;
 			//Change to default color
 			SetConsoleTextAttribute(console, 15);
 		}
-		else {
-			break;
-		}
 	}
-	return userDay;
-
+	return stoi(userDay);
 }
 
 //Checks if the date exists
 int checkYear()
 {
-	int userYear;
-	cin >> userYear;
+	string userYear;
+	
+	//Check if the year is invalid of if there is a char
 	while (true) {
-		if (userYear > 2022 || (userYear < 1))
+		try {
+			cin >> userYear;
+			if (((userYear >= "A") && (userYear <= "z")) || (stoi(userYear) > 2022 || stoi(userYear) < 1))
+			{
+				throw 1;
+			}
+
+			else {
+				break;
+			}
+		}
+
+		catch (...)
 		{
 			//Change the color to gray
 			SetConsoleTextAttribute(console, 8);
 			cout << endl << "        Incorrect input" << endl << "        > ";
-			cin >> userYear;
 			//Change to default color
 			SetConsoleTextAttribute(console, 15);
-		}
-		else {
-			break;
+			
 		}
 	}
-	return userYear;
+	return stoi(userYear);
 }
 
 //Checks if the date exists
 int checkMonth()
 {
-	int userMonth;
-	cin >> userMonth;
+	string userMonth;
 	while (true) {
-		if (userMonth > 12 || (userMonth < 1))
+		//Check if the month is invalid of if there is a char
+		try {
+			cin >> userMonth;
+			if (stoi(userMonth) > 12 || stoi(userMonth) < 1 || ((userMonth >= "A") && (userMonth <= "z")))
+			{
+				throw 1;
+			}
+
+			else {
+				break;
+			}
+		}
+
+		catch (...)
 		{
 			//Change the color to gray
 			SetConsoleTextAttribute(console, 8);
 			cout << endl << "        Incorrect input" << endl << "        > ";
-			cin >> userMonth;
 			//Change to default color
 			SetConsoleTextAttribute(console, 15);
-		}
-		else {
-			break;
+		
 		}
 	}
-	return userMonth;
+	return stoi(userMonth);
 }
 
 void fileFunctions::writeToFile(Node* Head)
