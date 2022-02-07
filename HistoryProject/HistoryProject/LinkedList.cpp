@@ -5,7 +5,7 @@ HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
 void linkedList::prependNode(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
 {
-	if(Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
+	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
 		Head->title = userTitle;
 		Head->day = userDay;
@@ -19,7 +19,7 @@ void linkedList::prependNode(Node*& Head, string userTitle, int userDay, int use
 
 void linkedList::appendNode(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
 {
-	if(Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
+	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
 		Head->title = userTitle;
 		Head->day = userDay;
@@ -88,7 +88,7 @@ void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int k
 	Node* temp = Head;
 	int counter = 0;
 
-	if(temp != NULL && temp->title == keyTitle && temp->day == keyDay && temp->month == keyMonth && temp->year == keyYear)
+	if (temp != NULL && temp->title == keyTitle && temp->day == keyDay && temp->month == keyMonth && temp->year == keyYear)
 	{
 		Head = temp->next;
 		delete temp;
@@ -96,15 +96,15 @@ void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int k
 	}
 	else
 	{
-		while(temp != NULL && temp->title != keyTitle && temp->day != keyDay &&temp->month != keyMonth && temp->year != keyYear)
+		while (temp != NULL && temp->title != keyTitle && temp->day != keyDay && temp->month != keyMonth && temp->year != keyYear)
 		{
 			temp = temp->next;
 			counter++;
 		}
 
-		if(temp == NULL)
+		if (temp == NULL)
 			return;
-		
+
 		if (!counter)
 		{
 			Head = Head->next;

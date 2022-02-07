@@ -71,6 +71,6 @@ void sorting(Node* n)
 }
 
 int main() {
-  
+
 }
 */
