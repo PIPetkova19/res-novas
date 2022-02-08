@@ -7,6 +7,11 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 void dynamicMenu(Node* Head);
 void removeMenu(Node* Head);
 
+void colorText(int colorSelect)
+{
+	SetConsoleTextAttribute(hConsole, colorSelect);
+}
+
 void menu()
 {
 	string sentances[4] = { "ADD ELEMENT" , "DELETE ELEMENT", "MODIFY ELEMENT", "REVIEW LIST" };
@@ -18,56 +23,63 @@ void menu()
 
 	while (choose)
 	{
-		SetConsoleTextAttribute(hConsole, 2);
+		colorText(2);
 
+		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+		cout << setw(139) << "    dMP dMP dMP dMMMMMP dMP    .aMMMb  .aMMMb  dMMMMMMMMb  dMMMMMP" << endl;
+		cout << setw(140) << "   dMP dMP dMP dMP     dMP    dMP VMP dMP dMP dMP dMP dMP dMP      " << endl;
+		cout << setw(140) << "  dMP dMP dMP dMMMP   dMP    dMP     dMP dMP dMP dMP dMP dMMMP     " << endl;
+		cout << setw(140) << " dMP.dMP.dMP dMP     dMP    dMP.aMP dMP.aMP dMP dMP dMP dMP        " << endl;
+		cout << setw(135) << " VMMMPVMMP  dMMMMMP dMMMMMP VMMMP   VMMMP  dMP dMP dMP dMMMMMP" << endl;
 		cout << endl;
-		cout << "    dMP dMP dMP dMMMMMP dMP    .aMMMb  .aMMMb  dMMMMMMMMb  dMMMMMP" << endl;
-		cout << "   dMP dMP dMP dMP     dMP    dMP VMP dMP dMP dMP dMP dMP dMP      " << endl;
-		cout << "  dMP dMP dMP dMMMP   dMP    dMP     dMP dMP dMP dMP dMP dMMMP     " << endl;
-		cout << " dMP.dMP.dMP dMP     dMP    dMP.aMP dMP.aMP dMP dMP dMP dMP        " << endl;
-		cout << " VMMMPVMMP  dMMMMMP dMMMMMP VMMMP   VMMMP  dMP dMP dMP dMMMMMP" << endl;
-		cout << endl;
 
 
-		SetConsoleTextAttribute(hConsole, 8);
+		colorText(8);
 
-		cout << " Use the UP and DOWN arrows to move and Space to select:" << endl;
+		cout << setw(132) << " Use the UP and DOWN arrows to move and Space to select:" << endl;
 		cout << "" << endl;
 
 		if (arrow == 0)
 		{
-			SetConsoleTextAttribute(hConsole, 15);
-			cout << " -->" << '\t' << sentances[0] << "\t<--" << endl;
-			cout << '\t' << sentances[1] << endl;
-			cout << '\t' << sentances[2] << endl << endl;
-			cout << '\t' << sentances[3] << endl;
+			colorText(2);
+			cout << setw(95) << "-->" << "\t  " << sentances[0] << "\t<--" << endl;
+			colorText(15);
+			cout << setw(95) << "\t  " << sentances[1] << endl;
+			cout << setw(95) << "\t  " << sentances[2] << endl << endl;
+			cout << setw(95) << "\t  " << sentances[3] << endl;
 		}
 
 		if (arrow == 1)
 		{
-			SetConsoleTextAttribute(hConsole, 15);
-			cout << '\t' << sentances[0] << endl;
-			cout << " -->" << '\t' << sentances[1] << "\t<--" << endl;
-			cout << '\t' << sentances[2] << endl << endl;
-			cout << '\t' << sentances[3] << endl;
+			colorText(15);
+			cout << setw(95) << "\t  " << sentances[0] << endl;
+			colorText(2);
+			cout << setw(95) << "-->" << "\t  " << sentances[1] << "\t<--" << endl;
+			colorText(15);
+			cout << setw(95) << "\t  " << sentances[2] << endl << endl;
+			cout << setw(95) << "\t  " << sentances[3] << endl;
 		}
 
 		if (arrow == 2)
 		{
-			SetConsoleTextAttribute(hConsole, 15);
-			cout << '\t' << sentances[0] << endl;
-			cout << '\t' << sentances[1] << endl;
-			cout << " -->" << '\t' << sentances[2] << "\t<--" << endl << endl;
-			cout << '\t' << sentances[3] << endl;
+			colorText(15);
+			cout << setw(95) << "\t  " << sentances[0] << endl;
+			cout << setw(95) << "\t  " << sentances[1] << endl;
+			colorText(2);
+			cout << setw(95) << "-->" << "\t  " << sentances[2] << "\t<--" << endl << endl;
+			colorText(15);
+			cout << setw(95) << "\t  " << sentances[3] << endl;
 		}
 
 		if (arrow == 3)
 		{
-			SetConsoleTextAttribute(hConsole, 15);
-			cout << '\t' << sentances[0] << endl;
-			cout << '\t' << sentances[1] << endl;
-			cout << '\t' << sentances[2] << endl << endl;
-			cout << " -->" << '\t' << sentances[3] << "\t<--" << endl;
+			colorText(15);
+			cout << setw(95) << "\t  " << sentances[0] << endl;
+			cout << setw(95) << "\t  " << sentances[1] << endl;
+			cout << setw(95) << "\t  " << sentances[2] << endl << endl;
+			colorText(4);
+			cout << setw(95) << "-->" << "\t  " << sentances[3] << "\t<--" << endl;
+			colorText(15);
 		}
 
 		key = _getch();
@@ -144,6 +156,8 @@ void removeMenu(Node* Head)
 
 	Node* tempCounter = Head;
 
+	int key;
+
 	while (tempCounter != NULL)
 	{
 		tempCounter = tempCounter->next;
@@ -152,22 +166,22 @@ void removeMenu(Node* Head)
 
 	int arrow = 0;
 
-	Node* tempSelect = Head;
-
 	while (true)
 	{
 		Node* temp = Head;
 
-		int key;
+		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
 		for (int j = 0; j < arrow; j++)
 		{
-			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+			cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 			temp = temp->next;
 		}
 
-		cout << " " << " -->" << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+		colorText(2);
+		cout << setw(95) << "-->" << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+		colorText(15);
 
 		temp = temp->next;
 
@@ -190,7 +204,7 @@ void removeMenu(Node* Head)
 			{
 				Beep(440, 50);
 				arrow--;
-				tempSelect = tempSelect->prev;
+				temp = temp->prev;
 			}
 		}
 		if (key == 80)
@@ -203,13 +217,13 @@ void removeMenu(Node* Head)
 			{
 				Beep(440, 50);
 				arrow++;
-				tempSelect = tempSelect->next;
+				temp = temp->next;
 			}
 		}
 
 		if (key == 32)
 		{
-			linkedList::removeNode(tempSelect);
+			linkedList::removeNode(temp);
 			break;
 		}
 
@@ -239,20 +253,28 @@ void dynamicMenu(Node* Head)
 	{
 		Node* temp = Head;
 
+		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+
+		colorText(7);
+		cout << setw(114) << "PRESS SPACE TO GO BACK" << endl << endl;
+		colorText(15);
+
 		for (int j = 0; j < arrow; j++)
 		{
-			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+			cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 			temp = temp->next;
 		}
 
-		cout << " " << " -->" << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+		colorText(2);
+		cout << setw(95) << "-->" << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+		colorText(15);
 
 		temp = temp->next;
 
 		for (int j = arrow + 1; j < eventsCounter; j++)
 		{
-			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+			cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 			temp = temp->next;
 		}
@@ -297,18 +319,18 @@ void dynamicMenu(Node* Head)
 
 void load()
 {
-	cout << endl << " ";
+	cout << endl << setw(102);
 
 	for (int r = 1; r <= 5; r++)
 	{
-		SetConsoleTextAttribute(hConsole, 2);
+		colorText(2);
 		Beep(220, 200);
 		std::cout << (char)219u << " ";
 	}
 
-	SetConsoleTextAttribute(hConsole, 15);
+	colorText(15);
 
-	cout << endl << endl << " ALL DONE. PRESS ENTER TO CONTINUE";
+	cout << endl << endl << endl << setw(123) << "ALL DONE. PRESS ENTER TO CONTINUE";
 
 	while (true)
 	{

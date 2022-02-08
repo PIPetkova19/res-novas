@@ -47,19 +47,21 @@ void linkedList::addNode(Node*& Head)
 	string userTitle;
 	int userDay, userMonth, userYear;
 
-	cout << " Enter event's Title:" << endl << "   > ";
+	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+
+	cout << setw(115) << "Enter event's Title:" << endl << setw(100) << "   > ";
 	cin >> userTitle;
 	cout << endl;
 
-	cout << " Enter event's Year:" << endl << "   > ";
+	cout << setw(115) << "Enter event's Year:" << endl << setw(100) << "   > ";
 	userYear = checkYear();
 	cout << endl;
 
-	cout << " Enter event's Month:" << endl << "   > ";
+	cout << setw(115) << "Enter event's Month:" << endl << setw(100) << "   > ";
 	userMonth = checkMonth();
 	cout << endl;
 
-	cout << " Enter event's Day:" << endl << "   > ";
+	cout << setw(115) << "Enter event's Day:" << endl << setw(100) << "   > ";
 	userDay = checkDay(userMonth, userYear);
 	cout << endl;
 
@@ -200,10 +202,10 @@ int checkDay(int userMonth, int userYear)
 		catch (...)
 		{
 			//Change the color to gray
-			SetConsoleTextAttribute(console, 8);
-			cout << endl << "        Incorrect input" << endl << "        > ";
+			colorText(8);
+			cout << endl << setw(117) << "Incorrect input" << endl << setw(108) << "   > ";
 			//Change to default color
-			SetConsoleTextAttribute(console, 15);
+			colorText(15);
 		}
 	}
 	return stoi(userDay);
@@ -231,10 +233,10 @@ int checkYear()
 		catch (...)
 		{
 			//Change the color to gray
-			SetConsoleTextAttribute(console, 8);
-			cout << endl << "        Incorrect input" << endl << "        > ";
+			colorText(8);
+			cout << endl << setw(117) << "Incorrect input" << endl << setw(108) << "   > ";
 			//Change to default color
-			SetConsoleTextAttribute(console, 15);
+			colorText(15);
 			
 		}
 	}
@@ -262,10 +264,10 @@ int checkMonth()
 		catch (...)
 		{
 			//Change the color to gray
-			SetConsoleTextAttribute(console, 8);
-			cout << endl << "        Incorrect input" << endl << "        > ";
+			colorText(8);
+			cout << endl << setw(117) << "Incorrect input" << endl << setw(108) << "   > ";
 			//Change to default color
-			SetConsoleTextAttribute(console, 15);
+			colorText(15);
 		
 		}
 	}
