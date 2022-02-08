@@ -7,5 +7,4 @@ int main()
 {
     ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
     menu();
-    fileFunctions::writeToFile(Head);
 }

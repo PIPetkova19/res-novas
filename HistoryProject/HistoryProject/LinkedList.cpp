@@ -117,6 +117,7 @@ void linkedList::addNode(Node*& Head)
 		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear);
 	}
 
+	fileFunctions::writeToFile(Head);
 	load();
 }
 
@@ -161,6 +162,7 @@ void linkedList::removeNode(Node*& Head)
 	cin >> keyDay >> keyMonth >> keyYear;
 
 	linkedList::removeGivenNode(Head, keyTitle, keyDay, keyMonth, keyYear);
+	fileFunctions::writeToFile(Head);
 }
 
 void linkedList::modifyNode(Node*& Head)
@@ -171,6 +173,7 @@ void linkedList::modifyNode(Node*& Head)
 	cin >> keyDay >> keyMonth >> keyYear;
 
 	modifyGivenNode(Head, keyTitle, keyDay, keyMonth, keyYear);
+	fileFunctions::writeToFile(Head);
 }
 
 void linkedList::modifyGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
@@ -198,6 +201,7 @@ void linkedList::printNodes(Node* Head)
 		cout << Head->title << " - " << Head->day << "/" << Head->month << "/" << Head->year << endl;
 		Head = Head->next;
 	}
+	fileFunctions::writeToFile(Head);
 }
 
 //Checks if the date exists
