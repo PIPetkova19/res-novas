@@ -17,6 +17,41 @@ void linkedList::prependNode(Node*& Head, string userTitle, int userDay, int use
 	Head = newNode;
 }
 
+void linkedList::addBetween(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
+{
+	Node* temp = Head;
+	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
+	{
+		Head->title = userTitle;
+		Head->day = userDay;
+		Head->month = userMonth;
+		Head->year = userYear;
+		return;
+	}
+
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear};
+
+	if (temp->next != NULL)
+		while (checkFunctions::checkBigger(temp, newNode))
+		{
+			if (temp->next == NULL)
+				break;
+			temp = temp->next;
+		}
+
+	if (!checkFunctions::checkBigger(newNode, temp))
+	{
+		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
+		return;
+	}
+
+	Node* tempAddress = temp->next;
+	temp->next = newNode;
+	newNode->next = tempAddress;
+	temp->next->prev = newNode;
+	newNode->prev = temp;
+}
+
 void linkedList::appendNode(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
@@ -54,17 +89,15 @@ void linkedList::addNode(Node*& Head)
 	cout << endl;
 
 	cout << setw(115) << "Enter event's Year:" << endl << setw(100) << "   > ";
-	userYear = checkYear();
+	userYear = checkFunctions::checkYear();
 	cout << endl;
 
 	cout << setw(115) << "Enter event's Month:" << endl << setw(100) << "   > ";
-	userMonth = checkMonth();
+	userMonth = checkFunctions::checkMonth();
 	cout << endl;
 
 	cout << setw(115) << "Enter event's Day:" << endl << setw(100) << "   > ";
-	userDay = checkDay(userMonth, userYear);
-	cout << endl;
-
+	userDay = checkFunctions::checkDay(userMonth, userYear);
 
 	Node* temp = Head;
 
@@ -73,13 +106,15 @@ void linkedList::addNode(Node*& Head)
 		temp = temp->next;
 	}
 
-	if (userYear > temp->year)
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear };
+
+	if (checkFunctions::checkBigger(newNode, temp))
 	{
 		linkedList::appendNode(Head, userTitle, userDay, userMonth, userYear);
 	}
 	else
 	{
-		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
+		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear);
 	}
 
 	load();
@@ -166,7 +201,7 @@ void linkedList::printNodes(Node* Head)
 }
 
 //Checks if the date exists
-int checkDay(int userMonth, int userYear)
+int checkFunctions::checkDay(int userMonth, int userYear)
 {
 	string userDay;
 
@@ -212,7 +247,7 @@ int checkDay(int userMonth, int userYear)
 }
 
 //Checks if the date exists
-int checkYear()
+int checkFunctions::checkYear()
 {
 	string userYear;
 	
@@ -244,7 +279,7 @@ int checkYear()
 }
 
 //Checks if the date exists
-int checkMonth()
+int checkFunctions::checkMonth()
 {
 	string userMonth;
 	while (true) {
@@ -272,6 +307,24 @@ int checkMonth()
 		}
 	}
 	return stoi(userMonth);
+}
+
+bool checkFunctions::checkBigger(Node*& firstNode, Node*& secondNode)
+{
+	if (firstNode->year > secondNode->year)
+		return true;
+	else if (firstNode->year < secondNode->year)
+		return false;
+	else
+		if (firstNode->month > secondNode->month)
+			return true;
+		else if (firstNode->month < secondNode->month)
+			return false;
+		else
+			if (firstNode->day > secondNode->day)
+				return true;
+			else if (firstNode->day < secondNode->day)
+				return false;
 }
 
 void fileFunctions::writeToFile(Node* Head)

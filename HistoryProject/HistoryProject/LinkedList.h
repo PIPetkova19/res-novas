@@ -23,6 +23,7 @@ extern Node* Head;
 namespace linkedList
 {
 	void prependNode(Node*&, string, int, int, int);
+	void addBetween(Node*&, string, int, int, int);
 	void appendNode(Node*&, string, int, int, int);
 	void addNode(Node*&);
 	void removeGivenNode(Node*&, string, int, int, int);
@@ -32,9 +33,13 @@ namespace linkedList
 	void printNodes(Node*);
 }
 
-int checkMonth();
-int checkYear();
-int checkDay(int userMonth, int userYear);
+namespace checkFunctions
+{
+	int checkMonth();
+	int checkYear();
+	int checkDay(int userMonth, int userYear);
+	bool checkBigger(Node*&, Node*&);
+}
 
 namespace fileFunctions
 {
