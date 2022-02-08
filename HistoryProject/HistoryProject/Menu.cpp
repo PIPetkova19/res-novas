@@ -14,6 +14,8 @@ void menu()
 
 	bool choose = true;
 
+	int key;
+
 	while (choose)
 	{
 		SetConsoleTextAttribute(hConsole, 2);
@@ -68,9 +70,9 @@ void menu()
 			cout << " -->" << '\t' << sentances[3] << "\t<--" << endl;
 		}
 
-		system("pause>nul");
+		key = _getch();
 
-		if (GetAsyncKeyState(VK_UP))
+		if (key == 72)
 		{
 			if (arrow == 0)
 			{
@@ -82,7 +84,7 @@ void menu()
 				arrow--;
 			}
 		}
-		if (GetAsyncKeyState(VK_DOWN))
+		if (key == 80)
 		{
 			if (arrow == 3)
 			{
@@ -95,7 +97,7 @@ void menu()
 			}
 		}
 
-		if (GetAsyncKeyState(VK_SPACE))
+		if (key == 32)
 		{
 			if (arrow == 0)
 			{
@@ -156,6 +158,8 @@ void removeMenu(Node* Head)
 	{
 		Node* temp = Head;
 
+		int key;
+
 		for (int j = 0; j < arrow; j++)
 		{
 			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
@@ -174,9 +178,9 @@ void removeMenu(Node* Head)
 			temp = temp->next;
 		}
 
-		system("pause>nul");
+		key = _getch();
 
-		if (GetAsyncKeyState(VK_UP))
+		if (key == 72)
 		{
 			if (arrow == 0)
 			{
@@ -189,7 +193,7 @@ void removeMenu(Node* Head)
 				tempSelect = tempSelect->prev;
 			}
 		}
-		if (GetAsyncKeyState(VK_DOWN))
+		if (key == 80)
 		{
 			if (arrow == eventsCounter - 1)
 			{
@@ -203,7 +207,7 @@ void removeMenu(Node* Head)
 			}
 		}
 
-		if (GetAsyncKeyState(VK_SPACE))
+		if (key == 32)
 		{
 			linkedList::removeNode(tempSelect);
 			break;
@@ -220,6 +224,8 @@ void dynamicMenu(Node* Head)
 	int eventsCounter = 0;
 
 	Node* tempCounter = Head;
+
+	int key;
 
 	while (tempCounter != NULL)
 	{
@@ -251,9 +257,9 @@ void dynamicMenu(Node* Head)
 			temp = temp->next;
 		}
 
-		system("pause>nul");
+		key = _getch();
 
-		if (GetAsyncKeyState(VK_UP))
+		if (key == 72)
 		{
 			if (arrow == 0)
 			{
@@ -265,7 +271,7 @@ void dynamicMenu(Node* Head)
 				arrow--;
 			}
 		}
-		if (GetAsyncKeyState(VK_DOWN))
+		if (key == 80)
 		{
 			if (arrow == eventsCounter - 1)
 			{
@@ -278,7 +284,7 @@ void dynamicMenu(Node* Head)
 			}
 		}
 
-		if (GetAsyncKeyState(VK_SPACE))
+		if (key == 32)
 		{
 			break;
 		}
@@ -304,9 +310,13 @@ void load()
 
 	cout << endl << endl << " ALL DONE. PRESS ENTER TO CONTINUE";
 
-	system("pause>nul");
+	while (true)
+	{
+		if (_getch() == 13)
+		{
+			system("cls");
 
-	system("cls");
-
-	menu();
+			menu();
+		}
+	}
 }
