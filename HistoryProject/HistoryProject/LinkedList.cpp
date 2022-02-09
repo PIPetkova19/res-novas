@@ -85,7 +85,8 @@ void linkedList::addNode(Node*& Head)
 	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
 	cout << setw(115) << "Enter event's Title:" << endl << setw(100) << "   > ";
-	cin >> userTitle;
+	cin.ignore();
+	getline(cin, userTitle);
 	cout << endl;
 
 	cout << setw(115) << "Enter event's Year:" << endl << setw(100) << "   > ";
