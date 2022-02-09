@@ -12,6 +12,16 @@ void colorText(int colorSelect)
 	SetConsoleTextAttribute(hConsole, colorSelect);
 }
 
+string userInfo()
+{
+	string userName;
+	cout << "Enter your first name: " << endl;
+	cin >> userName;
+	return userName;
+	system("cls");
+
+}
+
 void menu()
 {
 	string sentances[4] = { "ADD ELEMENT" , "DELETE ELEMENT", "MODIFY ELEMENT", "REVIEW LIST" };
@@ -32,7 +42,7 @@ void menu()
 		cout << setw(140) << " dMP.dMP.dMP dMP     dMP    dMP.aMP dMP.aMP dMP dMP dMP dMP        " << endl;
 		cout << setw(135) << " VMMMPVMMP  dMMMMMP dMMMMMP VMMMP   VMMMP  dMP dMP dMP dMMMMMP" << endl;
 		cout << endl;
-
+		cout << setw(130) <<"HI, " << userName << endl << endl;
 
 		colorText(8);
 

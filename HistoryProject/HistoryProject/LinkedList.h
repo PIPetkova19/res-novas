@@ -19,6 +19,7 @@ struct Node
 };
 
 extern Node* Head;
+extern string userName;
 
 namespace linkedList
 {

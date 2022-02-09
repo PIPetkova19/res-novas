@@ -77,17 +77,24 @@ void linkedList::appendNode(Node*& Head, string userTitle, int userDay, int user
 	}
 }
 
+string inputString(string userTitle)
+{
+	cin.ignore(INT_MAX, '\n');
+	getline(cin, userTitle);
+	cout << endl;
+	return userTitle;
+}
+
+
 void linkedList::addNode(Node*& Head)
 {
-	string userTitle;
+	string userTitle, userName;
 	int userDay, userMonth, userYear;
-
 	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
 	cout << setw(115) << "Enter event's Title:" << endl << setw(100) << "   > ";
-	cin.ignore();
-	getline(cin, userTitle);
-	cout << endl;
+	userTitle = inputString(userTitle);
+
 
 	cout << setw(114) << "Enter event's Year:" << endl << setw(100) << "   > ";
 	userYear = checkFunctions::checkYear();
@@ -282,7 +289,7 @@ int checkFunctions::checkYear()
 	}
 	return stoi(userYear);
 }
-
+ 
 //Checks if the date exists
 int checkFunctions::checkMonth()
 {

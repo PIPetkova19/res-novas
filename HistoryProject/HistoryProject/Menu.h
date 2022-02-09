@@ -11,3 +11,4 @@ using namespace std;
 void menu();
 void load();
 void colorText(int colorSelect);
+string userInfo();
