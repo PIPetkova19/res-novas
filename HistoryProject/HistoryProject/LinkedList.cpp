@@ -89,7 +89,7 @@ void linkedList::addNode(Node*& Head)
 	getline(cin, userTitle);
 	cout << endl;
 
-	cout << setw(115) << "Enter event's Year:" << endl << setw(100) << "   > ";
+	cout << setw(114) << "Enter event's Year:" << endl << setw(100) << "   > ";
 	userYear = checkFunctions::checkYear();
 	cout << endl;
 
@@ -97,7 +97,7 @@ void linkedList::addNode(Node*& Head)
 	userMonth = checkFunctions::checkMonth();
 	cout << endl;
 
-	cout << setw(115) << "Enter event's Day:" << endl << setw(100) << "   > ";
+	cout << setw(113) << "Enter event's Day:" << endl << setw(100) << "   > ";
 	userDay = checkFunctions::checkDay(userMonth, userYear);
 
 	Node* temp = Head;

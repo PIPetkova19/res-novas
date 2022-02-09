@@ -129,6 +129,8 @@ void menu()
 
 				removeMenu(Head);
 
+				menu();
+
 				choose = false;
 			}
 			else if (arrow == 2)
@@ -154,13 +156,13 @@ void removeMenu(Node* Head)
 {
 	int eventsCounter = 0;
 
-	Node* tempCounter = Head;
+	Node* temp = Head;
 
 	int key;
 
-	while (tempCounter != NULL)
+	while (temp != NULL)
 	{
-		tempCounter = tempCounter->next;
+		temp = temp->next;
 		eventsCounter++;
 	}
 
@@ -168,28 +170,47 @@ void removeMenu(Node* Head)
 
 	while (true)
 	{
-		Node* temp = Head;
+		temp = Head;
 
 		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
-		for (int j = 0; j < arrow; j++)
-		{
-			cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
-
-			temp = temp->next;
-		}
-
-		colorText(2);
-		cout << setw(95) << "-->" << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+		colorText(7);
+		cout << setw(114) << "PRESS SPACE TO DELETE" << endl << endl;
 		colorText(15);
 
-		temp = temp->next;
-
-		for (int j = arrow + 1; j < eventsCounter; j++)
+		if (temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
 		{
-			cout << '\t' << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+			for (int j = 0; j < arrow; j++)
+			{
+				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+				temp = temp->next;
+			}
+
+			colorText(2);
+			cout << setw(95) << "-->" << "\t  " << temp->title << "-" << to_string(temp->day) << "/" << to_string(temp->month) 
+				 << "/" << to_string(temp->year) << "\t<--" << endl;
+			colorText(15);
 
 			temp = temp->next;
+
+			for (int j = arrow + 1; j < eventsCounter; j++)
+			{
+				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+				temp = temp->next;
+			}
+
+			colorText(7);
+			cout << endl << setw(113) << "PRESS ESC TO GO BACK" << endl << endl;
+			colorText(15);
+		}
+		else
+		{
+			colorText(4);
+			cout << setw(115) << "- THERE ARE NO EVENTS -" << endl << endl;
+			cout << setw(113) << "PRESS ESC TO GO BACK" << endl << endl;
+			colorText(15);
 		}
 
 		key = _getch();
@@ -204,7 +225,6 @@ void removeMenu(Node* Head)
 			{
 				Beep(440, 50);
 				arrow--;
-				temp = temp->prev;
 			}
 		}
 		if (key == 80)
@@ -217,13 +237,17 @@ void removeMenu(Node* Head)
 			{
 				Beep(440, 50);
 				arrow++;
-				temp = temp->next;
 			}
 		}
 
 		if (key == 32)
 		{
 			linkedList::removeNode(temp);
+			break;
+		}
+
+		if (key == 27)
+		{
 			break;
 		}
 
@@ -237,13 +261,13 @@ void dynamicMenu(Node* Head)
 {
 	int eventsCounter = 0;
 
-	Node* tempCounter = Head;
+	Node* temp = Head;
 
 	int key;
 
-	while (tempCounter != NULL)
+	while (temp != NULL)
 	{
-		tempCounter = tempCounter->next;
+		temp = temp->next;
 		eventsCounter++;
 	}
 
@@ -251,32 +275,41 @@ void dynamicMenu(Node* Head)
 
 	while (true)
 	{
-		Node* temp = Head;
+		temp = Head;
 
 		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
 		colorText(7);
-		cout << setw(114) << "PRESS SPACE TO GO BACK" << endl << endl;
+		cout << setw(113) << "PRESS ESC TO GO BACK" << endl << endl;
 		colorText(15);
 
-		for (int j = 0; j < arrow; j++)
+		if (temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
 		{
-			cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+			for (int j = 0; j < arrow; j++)
+			{
+				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+				temp = temp->next;
+			}
+
+			colorText(2);
+			cout << setw(95) << "-->" << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+			colorText(15);
 
 			temp = temp->next;
+
+			for (int j = arrow + 1; j < eventsCounter; j++)
+			{
+				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+				temp = temp->next;
+			}
 		}
-
-		colorText(2);
-		cout << setw(95) << "-->" << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
-		colorText(15);
-
-		temp = temp->next;
-
-		for (int j = arrow + 1; j < eventsCounter; j++)
+		else
 		{
-			cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
-
-			temp = temp->next;
+			colorText(4);
+			cout << setw(115) << "- THERE ARE NO EVENTS -" << endl << endl;
+			colorText(15);
 		}
 
 		key = _getch();
@@ -306,7 +339,7 @@ void dynamicMenu(Node* Head)
 			}
 		}
 
-		if (key == 32)
+		if (key == 27)
 		{
 			break;
 		}
