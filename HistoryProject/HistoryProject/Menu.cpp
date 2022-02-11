@@ -15,14 +15,25 @@ void colorText(int colorSelect)
 //Display Front-End of the first page
 void title()
 {
-	colorText(2);
-	cout << endl << endl << endl << endl << endl << endl;
-	cout << setw(80) << "     dMP    dMP  dMMMMMP dMP     dMP    .aMMMb " << endl;
-	cout << setw(80) << "    dMP    dMP  dMP     dMP     dMP    dMP dMP " << endl;
-	cout << setw(80) << "    dMPdMPMMMP  dMMMP   dMP     dMP    dMP  dMP " << endl;
-	cout << setw(80) << "  dMP.  .dMP  dMP     dMP     dMP     dMP.aMP  " << endl;
-	cout << setw(80) << " VMV    MMP  dMMMMMP dMMMMMP dMMMMMP  VMMMP    " << endl << endl;
-	colorText(8);
+	cout << endl << endl << endl;
+	colorText(4);
+	cout << setw(55) << "====== = -                             = " << endl;
+	cout << setw(55) << "###+++*##*-                            **" << endl;
+	cout << setw(104) << "##+     -##=             -+***=:       *#*.     -##:        :##-     :##:  ::             " << endl;
+	cout << setw(104) << "##+      +##           :##*==+##*      *###.    -##:         +##     *#*   **             " << endl;
+	cout << setw(104) << "##+      *##           ##*    .**=     *####:   -##:         .##=   -##:  :##:            " << endl;
+	cout << setw(104) << "##*..::=##*. ==========###-            *#*=##-  -##:          +##   ##*   *##*            " << endl;
+	cout << setw(104) << "##*=####+:   ###*********###*=-.       *#* =##- -##:  :==+++=-:##= =##:  -####-  .-=++=:  " << endl;
+	cout << setw(104) << "##+  =##*:   ##+          .-=*##+      *#*  -##=-##=*##*++++*#####:##+   ##**## +##*++##*." << endl;
+	cout << setw(104) << "##+    =##*: ##+       ..     :##=     *#*   :#######=.       -######-::=##==#####.    *#*" << endl;
+	cout << setw(104) << "++=      =##*##+       *#*.   -##=     *#*    .####*.           *#################-       " << endl;
+	cout << setw(104) << "           =###*=====  .+##**###=      *#*     .*##-            :###.  =##.  .######+=:   " << endl;
+	cout << setw(104) << "            .###+++++    .-==-:        :-:      :##-            :##=   ##+    +##.:-+###+." << endl;
+	cout << setw(104) << "             ##+                                 *#*.           *##   =##.    .##=    :*#*" << endl;
+	cout << setw(104) << "             ##*---------                         *##=.       -##*.   :-:      =##.    *#*" << endl;
+	cout << setw(104) << "             ************                          :*##*++++*##*-               +##*++##* " << endl;
+	colorText(15);
+	cout << endl;
 }
 
 //Input your first name 
@@ -30,7 +41,7 @@ string userInfo()
 {
 	title();
 	string userName;
-	cout << setw(70) << "PLEASE ENTER YOUR FIRST NAME: ";
+	cout << setw(73) << "PLEASE ENTER YOUR FIRST NAME: " << endl << setw(53) << "> ";
 	cin >> userName;
 	return userName;
 }
@@ -55,7 +66,7 @@ void menu()
 		cout << setw(140) << " dMP.dMP.dMP dMP     dMP    dMP.aMP dMP.aMP dMP dMP dMP dMP        " << endl;
 		cout << setw(135) << " VMMMPVMMP  dMMMMMP dMMMMMP VMMMP   VMMMP  dMP dMP dMP dMMMMMP" << endl;
 		cout << endl;
-		cout << setw(130) <<"HI, " << userName << endl << endl;
+		cout << setw(104) <<"HI, " << userName << endl << endl;
 
 		colorText(8);
 
