@@ -27,8 +27,8 @@ namespace linkedList
 	void addBetween(Node*&, string, int, int, int);
 	void appendNode(Node*&, string, int, int, int);
 	void addNode(Node*&);
-	void removeGivenNode(Node*&, string, int, int, int);
-	void removeNode(Node*&);
+	void removeGivenNode(Node*&, int);
+	void removeNode(Node*&, int);
 	void modifyNode(Node*&);
 	void modifyGivenNode(Node*&, string, int, int, int);
 	void printNodes(Node*);
@@ -40,6 +40,14 @@ namespace checkFunctions
 	int checkYear();
 	int checkDay(int userMonth, int userYear);
 	bool checkBigger(Node*&, Node*&);
+}
+
+namespace grayCode
+{
+	long long int decToBin(int);
+	long long int  binToGraysCode(int);
+	int grayCodeConversion(long long);
+	int getGrayCode(Node*);
 }
 
 namespace fileFunctions

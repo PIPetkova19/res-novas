@@ -216,13 +216,13 @@ void removeMenu(Node* Head)
 		{
 			for (int j = 0; j < arrow; j++)
 			{
-				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 				temp = temp->next;
 			}
 
 			colorText(2);
-			cout << setw(95) << "-->" << "\t  " << temp->title << "-" << to_string(temp->day) << "/" << to_string(temp->month) 
+			cout << setw(95) << "-->" << "\t  " << temp->title << " - " << to_string(temp->day) << "/" << to_string(temp->month) 
 				 << "/" << to_string(temp->year) << "\t<--" << endl;
 			colorText(15);
 
@@ -230,7 +230,7 @@ void removeMenu(Node* Head)
 
 			for (int j = arrow + 1; j < eventsCounter; j++)
 			{
-				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 				temp = temp->next;
 			}
@@ -276,7 +276,8 @@ void removeMenu(Node* Head)
 
 		if (key == 32)
 		{
-			linkedList::removeNode(temp);
+			int grayNumber = grayCode::getGrayCode(temp);
+			linkedList::removeNode(temp, grayNumber);
 			break;
 		}
 
@@ -321,20 +322,20 @@ void dynamicMenu(Node* Head)
 		{
 			for (int j = 0; j < arrow; j++)
 			{
-				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 				temp = temp->next;
 			}
 
 			colorText(2);
-			cout << setw(95) << "-->" << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+			cout << setw(95) << "-->" << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
 			colorText(15);
 
 			temp = temp->next;
 
 			for (int j = arrow + 1; j < eventsCounter; j++)
 			{
-				cout << setw(95) << "\t  " << temp->title << "-" << temp->day << "/" << temp->month << "/" << temp->year << endl;
+				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 				temp = temp->next;
 			}

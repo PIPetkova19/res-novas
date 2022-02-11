@@ -129,50 +129,46 @@ void linkedList::addNode(Node*& Head)
 	load();
 }
 
-void linkedList::removeGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
+//Remove given node
+void linkedList::removeGivenNode(Node*& Head, int grayNum)
 {
 	Node* temp = Head;
 	int counter = 0;
+	int tempGrayNum = grayCode::getGrayCode(Head);
 
-	if (temp != NULL && temp->title == keyTitle && temp->day == keyDay && temp->month == keyMonth && temp->year == keyYear)
+	if (temp != NULL && tempGrayNum == grayNum)
 	{
 		Head = temp->next;
 		delete temp;
 		return;
 	}
-	else
+
+	while (temp != NULL && tempGrayNum != grayNum)
 	{
-		while (temp != NULL && temp->title != keyTitle && temp->day != keyDay && temp->month != keyMonth && temp->year != keyYear)
-		{
-			temp = temp->next;
-			counter++;
-		}
-
-		if (temp == NULL)
-			return;
-
-		if (!counter)
-		{
-			Head = Head->next;
-			delete temp;
-			return;
-		}
-		delete temp;
+		temp = temp->next;
+		counter++;
 	}
+
+	if (temp == NULL)
+		return;
+
+	if (!counter)
+	{
+		Head = Head->next;
+		delete temp;
+		return;
+	}
+	delete temp;
 }
 
-void linkedList::removeNode(Node*& Head)
+//Remove a node
+void linkedList::removeNode(Node*& Head, int grayNum)
 {
-	string keyTitle;
-	int keyDay, keyMonth, keyYear;
-
-	getline(cin, keyTitle, '\n');
-	cin >> keyDay >> keyMonth >> keyYear;
-
-	linkedList::removeGivenNode(Head, keyTitle, keyDay, keyMonth, keyYear);
+	linkedList::removeGivenNode(Head, grayNum);
 	fileFunctions::writeToFile(Head);
 }
 
+//Modify a node
 void linkedList::modifyNode(Node*& Head)
 {
 	string keyTitle;
@@ -184,6 +180,7 @@ void linkedList::modifyNode(Node*& Head)
 	fileFunctions::writeToFile(Head);
 }
 
+//Modifyes a given node
 void linkedList::modifyGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
 {
 	Node* temp = Head;
@@ -202,6 +199,7 @@ void linkedList::modifyGivenNode(Node*& Head, string keyTitle, int keyDay, int k
 	}
 }
 
+//Prints all dates
 void linkedList::printNodes(Node* Head)
 {
 	while (Head != NULL)
@@ -321,6 +319,7 @@ int checkFunctions::checkMonth()
 	return stoi(userMonth);
 }
 
+//Checks whick nodes date is more recent
 bool checkFunctions::checkBigger(Node*& firstNode, Node*& secondNode)
 {
 	if (firstNode->year > secondNode->year)
@@ -337,6 +336,61 @@ bool checkFunctions::checkBigger(Node*& firstNode, Node*& secondNode)
 				return true;
 			else if (firstNode->day < secondNode->day)
 				return false;
+}
+
+//Convert decimal to binary
+long long int grayCode::decToBin(int dec) {
+	int bin = 0;
+	int counter = 1;
+
+	while (dec) {
+		bin += (dec % 2) * counter;
+		dec /= 2;
+		counter *= 10;
+	}
+	return bin;
+}
+
+//Convert bin to Gray code
+long long int  grayCode::binToGraysCode(int dec) {
+	long long binary, gray = 0;
+	int lastNum = 0, penultimateNum = 0, counter = 0;
+	binary = grayCode::decToBin(dec);
+	while (binary != 0)
+	{
+		lastNum = binary % 10;
+		binary /= 10;
+		penultimateNum = binary % 10;
+
+		//Make XOR of both numbers
+		if ((lastNum ^ penultimateNum) != 0) {
+			//Pow(10, counter) makes them bigger
+			gray += pow(10, counter);
+		}
+		counter++;
+	}
+	return gray;
+}
+
+//Use gray code as bin and convert it to dec
+int grayCode::grayCodeConversion(long long temp) {
+	long long num = grayCode::binToGraysCode(temp);
+	int sum = 0, i = 0;
+	while (num)
+	{
+		sum += (num % 10) * pow(2, i);
+		i++;
+		num = num / 10;
+	}
+	return sum;
+}
+
+int grayCode::getGrayCode(Node* Head)
+{
+	int dateNum = int(Head->title[0]) + Head->day;
+	int grayNum = grayCode::grayCodeConversion(dateNum);
+
+	return grayNum;
 }
 
 void fileFunctions::writeToFile(Node* Head)
