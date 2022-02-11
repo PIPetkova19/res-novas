@@ -15,28 +15,21 @@ void colorText(int colorSelect)
 void title()
 {
 	colorText(2);
-	cout << endl << endl << endl << endl << endl  << endl;
-	
-	cout << setw(100) << "    dMMMMMP dMPdMP  dMMMMMP dMMMMMP dMMMMMP         dMP   dMP .aMMMb    dMP  dMP  dMMMMMP" << endl;
-	cout << setw(100) << "   dMP     dMP  dMP  dMP   dMP     dMP   MP        dMP  dMP  dMP dMP   dMP  dMP  dMP   MP"  << endl;
-	cout << setw(97) << "  dMMMP   dMP  dMP  dMP   dMMMP   dMPdMP           dMdM     dMP  dMP  dMP  dMP  dMPdMP" << endl;
-	cout << setw(96) << " dMP     dMP  dMP  dMP   dMP     dMP dM           dMP       dMP.aMP  dMP  dMP  dMP dM" << endl;
-	cout << setw(97) << "dMMMMMP dMP   MP  dMP   dMMMMMP dMP   dM         dMP        VMMMP   dMMMMMP   dMP   dM" << endl << endl;
-
-	cout << setw(100) << "    dMMMMMP dMMMMMP  dMMMMMP   dMMMMMP dMMMMMP         dMPdMP    dMPdMP    dM     dMP  dMMMMMP" << endl;
-	cout << setw(95) << "   dMP       dMP    dMP   MP  dM        dMP           dMP  dMP  dMP  dMP  dMPdMPdMPP  dMP" << endl;
-	cout << setw(96) << "  dMMMP     dMP    dMPdMP    dMMMMMP   dMP           dMP  dMP  dMPPPdMP  dM  dM  dM  dMMMP" << endl;
-	cout << setw(93) << " dMP       dMP    dMP dM         dM   dMP           dMP  dMP  dMP  dMP  dM  dM  dM  dMP"  << endl;
-	cout << setw(95) << "dMM     dMMMMMP  dMP   dM dMMMMMP    dMP           dMP  dMP  dMP  dMP  dM  dM  dM dMMMMMP" << endl;
+	cout << endl << endl << endl << endl << endl << endl;
+	cout << setw(80) << "     dMP    dMP  dMMMMMP dMP     dMP    .aMMMb " << endl;
+	cout << setw(80) << "    dMP    dMP  dMP     dMP     dMP    dMP dMP " << endl;
+	cout << setw(80) << "    dMPdMPMMMP  dMMMP   dMP     dMP    dMP  dMP " << endl;
+	cout << setw(80) << "  dMP.  .dMP  dMP     dMP     dMP     dMP.aMP  " << endl;
+	cout << setw(80) << " VMV    MMP  dMMMMMP dMMMMMP dMMMMMP  VMMMP    " << endl << endl;
 	colorText(8);
 }
 
 string userInfo()
-{		
+{
 	title();
 	string userName;
-	cout << setw(50) <<"-> ";
-	cin  >> userName;
+	cout << setw(70) << "PLEASE ENTER YOUR FIRST NAME: ";
+	cin >> userName;
 	return userName;
 }
 
