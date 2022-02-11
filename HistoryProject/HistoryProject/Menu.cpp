@@ -12,14 +12,32 @@ void colorText(int colorSelect)
 	SetConsoleTextAttribute(hConsole, colorSelect);
 }
 
-string userInfo()
+void title()
 {
-	string userName;
-	cout << "Enter your first name: " << endl;
-	cin >> userName;
-	return userName;
-	system("cls");
+	colorText(2);
+	cout << endl << endl << endl << endl << endl  << endl;
+	
+	cout << setw(100) << "    dMMMMMP dMPdMP  dMMMMMP dMMMMMP dMMMMMP         dMP   dMP .aMMMb    dMP  dMP  dMMMMMP" << endl;
+	cout << setw(100) << "   dMP     dMP  dMP  dMP   dMP     dMP   MP        dMP  dMP  dMP dMP   dMP  dMP  dMP   MP"  << endl;
+	cout << setw(97) << "  dMMMP   dMP  dMP  dMP   dMMMP   dMPdMP           dMdM     dMP  dMP  dMP  dMP  dMPdMP" << endl;
+	cout << setw(96) << " dMP     dMP  dMP  dMP   dMP     dMP dM           dMP       dMP.aMP  dMP  dMP  dMP dM" << endl;
+	cout << setw(97) << "dMMMMMP dMP   MP  dMP   dMMMMMP dMP   dM         dMP        VMMMP   dMMMMMP   dMP   dM" << endl << endl;
 
+	cout << setw(100) << "    dMMMMMP dMMMMMP  dMMMMMP   dMMMMMP dMMMMMP         dMPdMP    dMPdMP    dM     dMP  dMMMMMP" << endl;
+	cout << setw(95) << "   dMP       dMP    dMP   MP  dM        dMP           dMP  dMP  dMP  dMP  dMPdMPdMPP  dMP" << endl;
+	cout << setw(96) << "  dMMMP     dMP    dMPdMP    dMMMMMP   dMP           dMP  dMP  dMPPPdMP  dM  dM  dM  dMMMP" << endl;
+	cout << setw(93) << " dMP       dMP    dMP dM         dM   dMP           dMP  dMP  dMP  dMP  dM  dM  dM  dMP"  << endl;
+	cout << setw(95) << "dMM     dMMMMMP  dMP   dM dMMMMMP    dMP           dMP  dMP  dMP  dMP  dM  dM  dM dMMMMMP" << endl;
+	colorText(8);
+}
+
+string userInfo()
+{		
+	title();
+	string userName;
+	cout << setw(50) <<"-> ";
+	cin  >> userName;
+	return userName;
 }
 
 void menu()

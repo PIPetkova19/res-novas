@@ -5,10 +5,9 @@ Node* Head = new Node;
 string userName;
 
 int main()
-{
-    userName =userInfo();
+{  
+    userName = userInfo();
     system("cls");
-
     ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
     menu();
 }
