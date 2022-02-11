@@ -12,6 +12,7 @@ void colorText(int colorSelect)
 	SetConsoleTextAttribute(hConsole, colorSelect);
 }
 
+//Display Front-End of the first page
 void title()
 {
 	colorText(2);
@@ -24,6 +25,7 @@ void title()
 	colorText(8);
 }
 
+//Input your first name 
 string userInfo()
 {
 	title();
