@@ -457,3 +457,19 @@ void sorting::sortDecreasing(Node* Head)
 		tempNext = tempNext->next;
 	}
 }
+
+void sorting::sortAlphabetical(Node* Head)
+{
+	Node* temp = Head;
+	Node* tempNext = temp->next;
+
+	while (temp->next != NULL)
+	{
+		if (temp->title[0] < tempNext->title[0])
+		{
+			sorting::swapNodes(temp, tempNext);
+		}
+		temp = tempNext;
+		tempNext = tempNext->next;
+	}
+}
