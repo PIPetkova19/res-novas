@@ -6,6 +6,7 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 void dynamicMenu(Node* Head);
 void removeMenu(Node* Head);
+void modifyMenu(Node* Head);
 
 void colorText(int colorSelect)
 {
@@ -169,6 +170,12 @@ void menu()
 			}
 			else if (arrow == 2)
 			{
+				system("cls");
+
+				modifyMenu(Head);
+
+				menu();
+
 				choose = false;
 			}
 			else if (arrow == 3)
@@ -285,7 +292,121 @@ void removeMenu(Node* Head)
 				counter++;
 			}
 			int grayNum = grayCode::getGrayCode(temp);
-			linkedList::removeNode(temp, grayNum);
+			linkedList::modifyNode(temp, grayNum);
+			break;
+		}
+
+		if (key == 27)
+		{
+			break;
+		}
+
+		system("cls");
+	}
+
+	system("cls");
+}
+
+void modifyMenu(Node* Head)
+{
+	int eventsCounter = 0;
+
+	Node* temp = Head;
+
+	int key;
+
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		eventsCounter++;
+	}
+
+	int arrow = 0;
+
+	while (true)
+	{
+		temp = Head;
+
+		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+
+		colorText(7);
+		cout << setw(114) << "PRESS SPACE TO MODIFY" << endl << endl;
+		colorText(15);
+		int j = 0;
+
+		if (temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
+		{
+			for (j; j < arrow; j++)
+			{
+				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+				temp = temp->next;
+			}
+
+			colorText(2);
+			cout << setw(95) << "-->" << "\t  " << temp->title << " - " << to_string(temp->day) << "/" << to_string(temp->month)
+				<< "/" << to_string(temp->year) << "\t<--" << endl;
+			colorText(15);
+
+			temp = temp->next;
+
+			for (j = arrow + 1; j < eventsCounter; j++)
+			{
+				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
+
+				temp = temp->next;
+			}
+
+			colorText(7);
+			cout << endl << setw(113) << "PRESS ESC TO GO BACK" << endl << endl;
+			colorText(15);
+		}
+		else
+		{
+			colorText(4);
+			cout << setw(115) << "- THERE ARE NO EVENTS -" << endl << endl;
+			cout << setw(113) << "PRESS ESC TO GO BACK" << endl << endl;
+			colorText(15);
+		}
+
+		key = _getch();
+
+		if (key == 72)
+		{
+			if (arrow == 0)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				Beep(440, 50);
+				arrow--;
+			}
+		}
+		if (key == 80)
+		{
+			if (arrow == eventsCounter - 1)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				Beep(440, 50);
+				arrow++;
+			}
+		}
+
+		if (key == 32)
+		{
+			temp = Head;
+			int counter = 0;
+			while (counter != arrow)
+			{
+				temp = temp->next;
+				counter++;
+			}
+			int grayNum = grayCode::getGrayCode(temp);
+			linkedList::modifyNode(temp, grayNum);
 			break;
 		}
 

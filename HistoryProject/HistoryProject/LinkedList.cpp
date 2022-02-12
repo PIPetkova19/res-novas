@@ -172,6 +172,9 @@ void linkedList::modifyNode(Node*& Head, int grayNum)
 {
 	string keyTitle, keyName;
 	int keyDay, keyMonth, keyYear;
+
+	system("cls");
+
 	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
 	cout << setw(115) << "Enter event's Title:" << endl << setw(100) << "   > ";
