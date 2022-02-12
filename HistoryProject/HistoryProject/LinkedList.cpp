@@ -168,27 +168,48 @@ void linkedList::removeNode(Node*& Head, int grayNum)
 }
 
 //Modify a node
-void linkedList::modifyNode(Node*& Head)
+void linkedList::modifyNode(Node*& Head, int grayNum)
 {
-	string keyTitle;
-	cin >> keyTitle;
+	string keyTitle, keyName;
 	int keyDay, keyMonth, keyYear;
-	cin >> keyDay >> keyMonth >> keyYear;
+	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
-	modifyGivenNode(Head, keyTitle, keyDay, keyMonth, keyYear);
+	cout << setw(115) << "Enter event's Title:" << endl << setw(100) << "   > ";
+	keyTitle = inputString(keyTitle);
+
+
+	cout << setw(114) << "Enter event's Year:" << endl << setw(100) << "   > ";
+	keyYear = checkFunctions::checkYear();
+	cout << endl;
+
+	cout << setw(115) << "Enter event's Month:" << endl << setw(100) << "   > ";
+	keyMonth = checkFunctions::checkMonth();
+	cout << endl;
+
+	cout << setw(113) << "Enter event's Day:" << endl << setw(100) << "   > ";
+	keyDay = checkFunctions::checkDay(keyMonth, keyYear);
+
+	modifyGivenNode(Head, grayNum, keyTitle, keyDay, keyMonth, keyYear);
 }
 
 //Modifyes a given node
-void linkedList::modifyGivenNode(Node*& Head, string keyTitle, int keyDay, int keyMonth, int keyYear)
+void linkedList::modifyGivenNode(Node*& Head, int grayNum, string keyTitle, int keyDay, int keyMonth, int keyYear)
 {
-	Node* temp = Head;
-
-	while (temp != NULL && temp->title != keyTitle && temp->day != keyDay && temp->month != keyMonth && temp->year != keyYear)
+	while (Head->prev != NULL)
 	{
-		temp = temp->next;
+		Head = Head->prev;
 	}
 
-	if (temp != NULL)
+	Node* temp = Head;
+	int tempGrayNum = grayCode::getGrayCode(temp);
+
+	while (temp != NULL && tempGrayNum != grayNum)
+	{
+		temp = temp->next;
+		tempGrayNum = grayCode::getGrayCode(temp);
+	}
+
+	if (temp != NULL && tempGrayNum == grayNum)
 	{
 		temp->title = keyTitle;
 		temp->day = keyDay;
