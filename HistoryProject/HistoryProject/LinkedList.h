@@ -54,6 +54,6 @@ namespace sorting
 {
 	void swapNodes(Node*, Node*);
 	void sortIncreasing(Node*);
-	void sortDecresing(Node*);
+	void sortDecreasing(Node*);
 	void sortAlphabetical(Node*);
 }
