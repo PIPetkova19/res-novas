@@ -3,7 +3,7 @@
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
-void linkedList::prependNode(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
+void linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
@@ -17,7 +17,7 @@ void linkedList::prependNode(Node*& Head, string userTitle, int userDay, int use
 	Head = newNode;
 }
 
-void linkedList::addBetween(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
+void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	Node* temp = Head;
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
@@ -52,7 +52,7 @@ void linkedList::addBetween(Node*& Head, string userTitle, int userDay, int user
 	newNode->prev = temp;
 }
 
-void linkedList::appendNode(Node*& Head, string userTitle, int userDay, int userMonth, int userYear)
+void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
@@ -86,7 +86,7 @@ string inputString(string userTitle)
 }
 
 
-void linkedList::addNode(Node*& Head)
+void linkedList::addNode(Node* Head)
 {
 	string userTitle, userName;
 	int userDay, userMonth, userYear;
@@ -128,7 +128,7 @@ void linkedList::addNode(Node*& Head)
 }
 
 //Remove given node
-void linkedList::removeGivenNode(Node*& Head, int grayNum)
+void linkedList::removeGivenNode(Node* Head, int grayNum)
 {
 	while (Head->prev != NULL)
 	{
@@ -162,13 +162,13 @@ void linkedList::removeGivenNode(Node*& Head, int grayNum)
 }
 
 //Remove a node
-void linkedList::removeNode(Node*& Head, int grayNum)
+void linkedList::removeNode(Node* Head, int grayNum)
 {
 	linkedList::removeGivenNode(Head, grayNum);
 }
 
 //Modify a node
-void linkedList::modifyNode(Node*& Head, int grayNum)
+void linkedList::modifyNode(Node* Head, int grayNum)
 {
 	string keyTitle, keyName;
 	int keyDay, keyMonth, keyYear;
@@ -196,7 +196,7 @@ void linkedList::modifyNode(Node*& Head, int grayNum)
 }
 
 //Modifyes a given node
-void linkedList::modifyGivenNode(Node*& Head, int grayNum, string keyTitle, int keyDay, int keyMonth, int keyYear)
+void linkedList::modifyGivenNode(Node* Head, int grayNum, string keyTitle, int keyDay, int keyMonth, int keyYear)
 {
 	while (Head->prev != NULL)
 	{
@@ -341,7 +341,7 @@ int checkFunctions::checkMonth()
 }
 
 //Checks whick nodes date is more recent
-bool checkFunctions::checkBigger(Node*& firstNode, Node*& secondNode)
+bool checkFunctions::checkBigger(Node* firstNode, Node* secondNode)
 {
 	if (firstNode->year > secondNode->year)
 		return true;
@@ -413,4 +413,31 @@ int grayCode::getGrayCode(Node* Head)
 	int grayNum = grayCode::grayCodeConversion(dateNum);
 
 	return grayNum;
+}
+
+void sorting::swapNodes(Node* firstNode, Node* secondNode)
+{
+	Node* tempPrev = firstNode->prev;
+	Node* tempNext = secondNode->next;
+
+	secondNode->next = firstNode;
+	firstNode->prev = secondNode;
+	secondNode->prev = tempPrev;
+	firstNode->next = tempNext;
+}
+
+void sorting::sortIncreasing(Node* Head)
+{
+	Node* temp = Head;
+	Node* tempNext = temp->next;
+
+	while (temp->next != NULL)
+	{
+		if (checkFunctions::checkBigger(temp, tempNext))
+		{
+			sorting::swapNodes(temp, tempNext);
+		}
+		temp = tempNext;
+		tempNext = tempNext->next;
+	}
 }

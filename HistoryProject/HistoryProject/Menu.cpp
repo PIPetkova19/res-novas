@@ -292,7 +292,7 @@ void removeMenu(Node* Head)
 				counter++;
 			}
 			int grayNum = grayCode::getGrayCode(temp);
-			linkedList::modifyNode(temp, grayNum);
+			linkedList::removeNode(temp, grayNum);
 			break;
 		}
 
