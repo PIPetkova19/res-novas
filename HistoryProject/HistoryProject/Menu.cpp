@@ -211,10 +211,11 @@ void removeMenu(Node* Head)
 		colorText(7);
 		cout << setw(114) << "PRESS SPACE TO DELETE" << endl << endl;
 		colorText(15);
+		int j = 0;
 
 		if (temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
 		{
-			for (int j = 0; j < arrow; j++)
+			for (j; j < arrow; j++)
 			{
 				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
@@ -228,7 +229,7 @@ void removeMenu(Node* Head)
 
 			temp = temp->next;
 
-			for (int j = arrow + 1; j < eventsCounter; j++)
+			for (j = arrow + 1; j < eventsCounter; j++)
 			{
 				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
@@ -276,8 +277,15 @@ void removeMenu(Node* Head)
 
 		if (key == 32)
 		{
-			int grayNumber = grayCode::getGrayCode(temp);
-			linkedList::removeNode(temp, grayNumber);
+			temp = Head;
+			int counter = 0;
+			while (counter != arrow)
+			{
+				temp = temp->next;
+				counter++;
+			}
+			int grayNum = grayCode::getGrayCode(temp);
+			linkedList::removeNode(temp, grayNum);
 			break;
 		}
 
@@ -318,7 +326,7 @@ void dynamicMenu(Node* Head)
 		cout << setw(113) << "PRESS ESC TO GO BACK" << endl << endl;
 		colorText(15);
 
-		if (temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
+		if (temp != nullptr && temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
 		{
 			for (int j = 0; j < arrow; j++)
 			{

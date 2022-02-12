@@ -124,48 +124,47 @@ void linkedList::addNode(Node*& Head)
 	{
 		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear);
 	}
-
-	fileFunctions::writeToFile(Head);
 	load();
 }
 
 //Remove given node
 void linkedList::removeGivenNode(Node*& Head, int grayNum)
 {
-	Node* temp = Head;
-	int counter = 0;
-	int tempGrayNum = grayCode::getGrayCode(Head);
-
-	if (temp != NULL && tempGrayNum == grayNum)
+	while (Head->prev != NULL)
 	{
-		Head = temp->next;
-		delete temp;
-		return;
+		Head = Head->prev;
 	}
+	Node* temp = Head;
+	int tempGrayNum = grayCode::getGrayCode(temp);
 
 	while (temp != NULL && tempGrayNum != grayNum)
 	{
 		temp = temp->next;
-		counter++;
+		tempGrayNum = grayCode::getGrayCode(temp);
 	}
 
-	if (temp == NULL)
-		return;
-
-	if (!counter)
+	if (temp != NULL && tempGrayNum == grayNum)
 	{
+		Node* tempPrev = temp->prev;
 		Head = Head->next;
-		delete temp;
+		temp->title = "";
+		temp->day = 0;
+		temp->month = 0;
+		temp->year = 0;
+		if(tempPrev != nullptr)
+		{
+			tempPrev->next = temp->next;
+			if(temp->next != nullptr)
+				temp->next->prev = tempPrev;
+		}
 		return;
 	}
-	delete temp;
 }
 
 //Remove a node
 void linkedList::removeNode(Node*& Head, int grayNum)
 {
 	linkedList::removeGivenNode(Head, grayNum);
-	fileFunctions::writeToFile(Head);
 }
 
 //Modify a node
@@ -177,7 +176,6 @@ void linkedList::modifyNode(Node*& Head)
 	cin >> keyDay >> keyMonth >> keyYear;
 
 	modifyGivenNode(Head, keyTitle, keyDay, keyMonth, keyYear);
-	fileFunctions::writeToFile(Head);
 }
 
 //Modifyes a given node
@@ -207,7 +205,6 @@ void linkedList::printNodes(Node* Head)
 		cout << Head->title << " - " << Head->day << "/" << Head->month << "/" << Head->year << endl;
 		Head = Head->next;
 	}
-	fileFunctions::writeToFile(Head);
 }
 
 //Checks if the date exists
@@ -336,6 +333,7 @@ bool checkFunctions::checkBigger(Node*& firstNode, Node*& secondNode)
 				return true;
 			else if (firstNode->day < secondNode->day)
 				return false;
+	return 0;
 }
 
 //Convert decimal to binary
@@ -391,15 +389,4 @@ int grayCode::getGrayCode(Node* Head)
 	int grayNum = grayCode::grayCodeConversion(dateNum);
 
 	return grayNum;
-}
-
-void fileFunctions::writeToFile(Node* Head)
-{
-	ofstream MyFile("dateInfo.txt");
-
-	while (Head != NULL)
-	{
-		MyFile << Head->title << " - " << Head->day << "/" << Head->month << "/" << Head->year << endl;
-		Head = Head->next;
-	}
 }

@@ -49,8 +49,3 @@ namespace grayCode
 	int grayCodeConversion(long long);
 	int getGrayCode(Node*);
 }
-
-namespace fileFunctions
-{
-	void writeToFile(Node*);
-}
