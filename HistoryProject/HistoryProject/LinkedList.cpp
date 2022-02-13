@@ -19,12 +19,14 @@ Node* linkedList::prependNode(Node* Head, string userTitle, int userDay, int use
 	{
 		Head->prev = newNode;
 	}
+	Head = newNode;
 	return newNode;
 }
 
 void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
 {
 	Node* temp = Head;
+	int counter = 0;
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
 		Head->title = userTitle;
@@ -37,6 +39,10 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 
 	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme };
 
+	while (temp->prev != NULL)
+	{
+		temp = temp->prev;
+	}
 	if (temp->next != NULL)
 	{
 		while (checkFunctions::checkBigger(newNode, temp))
@@ -46,11 +52,16 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 				break;
 			}
 			temp = temp->next;
+			counter++;
 		}
 	}
 
-	if (!checkFunctions::checkBigger(temp, newNode))
+	if (!checkFunctions::checkBigger(newNode, Head) && counter == 0)
 	{
+		while (Head->prev != NULL)
+		{
+			Head = Head->prev;
+		}
 		Head = linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear, userTheme);
 		return;
 	}
@@ -138,10 +149,6 @@ void linkedList::addNode(Node* Head)
 	}
 	else
 	{
-		while (temp->next != NULL)
-		{
-			temp = temp->next;
-		}
 		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear, userTheme);
 	}
 
