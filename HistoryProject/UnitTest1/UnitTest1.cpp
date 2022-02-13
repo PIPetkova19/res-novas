@@ -5,29 +5,90 @@
 //#include "..\HistoryProject\Menu.cpp"
 //#include "..\HistoryProject\LinkedList.cpp"
 
+
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace grayCode;
+
+
 
 namespace UnitTest1
 {
 	TEST_CLASS(UnitTest1)
 	{
 	public:
-		     //Arrange
-		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnTrueWhenTheInputIsValid)
+		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnBinaryRepresentationOfFive)
 			TEST_OWNER(L"IGVasilev19")
 			TEST_PRIORITY("High")
 			END_TEST_METHOD_ATTRIBUTE()
-			TEST_METHOD(expectToReturnTrueWhenTheInputIsValid)
+			TEST_METHOD(expectToReturnBinaryRepresentationOfFive)
 		{
+			//Arrange
+			int expected = 101;
+
+
 
 			//Act
-
-			
-
-			bool result = checkFunctions::checkMonth();
-
+			int binary = decToBin(5);
 			//Assert
-			Assert::AreEqual(true, result);
+
+			Assert::AreEqual(expected, binary);
+
 		}
+		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnGrayRepresentationOfBinaryNumber)
+			TEST_OWNER(L"IGVasilev19")
+			TEST_PRIORITY("High")
+			END_TEST_METHOD_ATTRIBUTE()
+			TEST_METHOD(expectToReturnGrayRepresentationOfBinaryNumber)
+		{
+			//Arrange
+			int expected = 101;
+
+
+
+			//Act
+			int binary = binToGraysCode(6);
+			//Assert
+
+			Assert::AreEqual(expected, binary);
+
+		}
+		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnDecimalRepresentationOfGrayNumber)
+			TEST_OWNER(L"IGVasilev19")
+			TEST_PRIORITY("High")
+			END_TEST_METHOD_ATTRIBUTE()
+			TEST_METHOD(expectToReturnDecimalRepresentationOfGrayNumber)
+		{
+			//Arrange
+			int expected = 87;
+
+
+
+			//Act
+			int dec = grayCodeConversion(101);
+			//Assert
+
+			Assert::AreEqual(expected, dec);
+
+		}
+		/*BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnGrayRepresentationOfBinaryNumber)
+			TEST_OWNER(L"IGVasilev19")
+			TEST_PRIORITY("High")
+			END_TEST_METHOD_ATTRIBUTE()
+			TEST_METHOD(expectToReturnGrayRepresentationOfBinaryNumber)
+		{
+			//Arrange
+			int expected = 1101;
+
+
+			//Act
+			Node* gray = getGrayCode();
+			//Assert
+
+			Assert::AreEqual(expected, gray);
+
+		}*/
+
 	};
+
 }

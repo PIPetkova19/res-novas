@@ -3,7 +3,7 @@
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
-void linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
+void linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
@@ -11,14 +11,13 @@ void linkedList::prependNode(Node* Head, string userTitle, int userDay, int user
 		Head->day = userDay;
 		Head->month = userMonth;
 		Head->year = userYear;
-		Head->theme = userTheme;
 		return;
 	}
-	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme, NULL, Head};
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, NULL, Head };
 	Head = newNode;
 }
 
-void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
+void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	Node* temp = Head;
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
@@ -27,11 +26,10 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 		Head->day = userDay;
 		Head->month = userMonth;
 		Head->year = userYear;
-		Head->theme = userTheme;
 		return;
 	}
 
-	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme};
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear};
 
 	if (temp->next != NULL)
 		while (checkFunctions::checkBigger(temp, newNode))
@@ -43,7 +41,7 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 
 	if (!checkFunctions::checkBigger(newNode, temp))
 	{
-		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear, userTheme);
+		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
 		return;
 	}
 
@@ -54,7 +52,7 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 	newNode->prev = temp;
 }
 
-void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
+void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
@@ -62,10 +60,9 @@ void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userM
 		Head->day = userDay;
 		Head->month = userMonth;
 		Head->year = userYear;
-		Head->theme = userTheme;
 		return;
 	}
-	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme, NULL, NULL};
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, NULL, NULL };
 
 	Node* temp = Head;
 	while (temp)
@@ -119,22 +116,19 @@ void linkedList::addNode(Node* Head)
 
 	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear };
 
-	string userTheme = selectTheme(Head);
-
 	if (checkFunctions::checkBigger(newNode, temp))
 	{
-		linkedList::appendNode(Head, userTitle, userDay, userMonth, userYear, userTheme);
+		linkedList::appendNode(Head, userTitle, userDay, userMonth, userYear);
 	}
 	else
 	{
-		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear, userTheme);
+		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear);
 	}
-
 	load();
 }
 
 //Remove given node
-Node* linkedList::removeGivenNode(Node* Head, int grayNum)
+void linkedList::removeGivenNode(Node* Head, int grayNum)
 {
 	while (Head->prev != NULL)
 	{
@@ -152,41 +146,25 @@ Node* linkedList::removeGivenNode(Node* Head, int grayNum)
 	if (temp != NULL && tempGrayNum == grayNum)
 	{
 		Node* tempPrev = temp->prev;
-		Node* tempNext = temp->next;
-		if(tempPrev == nullptr)
+		Head = Head->next;
+		temp->title = "";
+		temp->day = 0;
+		temp->month = 0;
+		temp->year = 0;
+		if(tempPrev != nullptr)
 		{
-			if (temp->next != nullptr) 
-			{
-				delete temp;
-				tempNext->prev = NULL;
-				return tempNext;
-			}
-			else
-			{
-				temp->title = "";
-				temp->day = 0;
-				temp->month = 0;
-				temp->year = 0;
-			}
-		} 
-		else
-		{
-			temp->title = "";
-			temp->day = 0;
-			temp->month = 0;
-			temp->year = 0; 
 			tempPrev->next = temp->next;
-			if (temp->next != nullptr)
+			if(temp->next != nullptr)
 				temp->next->prev = tempPrev;
 		}
+		return;
 	}
-	return Head;
 }
 
 //Remove a node
-Node* linkedList::removeNode(Node* Head, int grayNum)
+void linkedList::removeNode(Node* Head, int grayNum)
 {
-	return linkedList::removeGivenNode(Head, grayNum);
+	linkedList::removeGivenNode(Head, grayNum);
 }
 
 //Modify a node
@@ -434,7 +412,7 @@ int grayCode::getGrayCode(Node* Head)
 	int dateNum = int(Head->title[0]) + Head->day;
 	int grayNum = grayCode::grayCodeConversion(dateNum);
 
-	return grayNum;
+	return grayNum;	
 }
 
 void sorting::swapNodes(Node* firstNode, Node* secondNode)
@@ -450,45 +428,48 @@ void sorting::swapNodes(Node* firstNode, Node* secondNode)
 
 void sorting::sortIncreasing(Node* Head)
 {
-	Node* tempNext = Head->next;
+	Node* temp = Head;
+	Node* tempNext = temp->next;
 
-	while (Head->next != NULL)
+	while (temp->next != NULL)
 	{
-		if (checkFunctions::checkBigger(Head, tempNext))
+		if (checkFunctions::checkBigger(temp, tempNext))
 		{
-			sorting::swapNodes(Head, tempNext);
+			sorting::swapNodes(temp, tempNext);
 		}
-		Head = tempNext;
+		temp = tempNext;
 		tempNext = tempNext->next;
 	}
 }
 
 void sorting::sortDecreasing(Node* Head)
 {
-	Node* tempNext = Head->next;
+	Node* temp = Head;
+	Node* tempNext = temp->next;
 
-	while (Head->next != NULL)
+	while (temp->next != NULL)
 	{
-		if (!checkFunctions::checkBigger(Head, tempNext))
+		if (!checkFunctions::checkBigger(temp, tempNext))
 		{
-			sorting::swapNodes(Head, tempNext);
+			sorting::swapNodes(temp, tempNext);
 		}
-		Head = tempNext;
+		temp = tempNext;
 		tempNext = tempNext->next;
 	}
 }
 
 void sorting::sortAlphabetical(Node* Head)
 {
-	Node* tempNext = Head->next;
+	Node* temp = Head;
+	Node* tempNext = temp->next;
 
-	while (Head->next != NULL)
+	while (temp->next != NULL)
 	{
-		if (Head->title[0] > tempNext->title[0])
+		if (temp->title[0] < tempNext->title[0])
 		{
-			sorting::swapNodes(Head, tempNext);
+			sorting::swapNodes(temp, tempNext);
 		}
-		Head = tempNext;
+		temp = tempNext;
 		tempNext = tempNext->next;
 	}
 }
