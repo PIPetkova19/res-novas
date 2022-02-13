@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "..\HistoryProject\LinkedList.h"
-#include "..\HistoryProject\Menu.h"
-#include "..\HistoryProject\Menu.cpp"
-#include "..\HistoryProject\LinkedList.cpp"
+//#include "..\HistoryProject\Menu.h"
+//#include "..\HistoryProject\Menu.cpp"
+//#include "..\HistoryProject\LinkedList.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -15,19 +15,16 @@ namespace UnitTest1
 		     //Arrange
 		BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnTrueWhenTheInputIsValid)
 			TEST_OWNER(L"IGVasilev19")
-			TEST_PRIORITY("Low")
+			TEST_PRIORITY("High")
 			END_TEST_METHOD_ATTRIBUTE()
 			TEST_METHOD(expectToReturnTrueWhenTheInputIsValid)
 		{
 
 			//Act
-			int x = 12;
-			int y = 2005;
 
+			
 
-
-			bool result = checkFunctions::checkDay(x, y);
-
+			bool result = checkFunctions::checkMonth();
 
 			//Assert
 			Assert::AreEqual(true, result);
