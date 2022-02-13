@@ -334,7 +334,7 @@ void modifyMenu(Node* Head)
 		colorText(15);
 		int j = 0;
 
-		if (temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
+		if (temp != nullptr && temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
 		{
 			for (j; j < arrow; j++)
 			{
