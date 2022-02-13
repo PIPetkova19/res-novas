@@ -5,7 +5,7 @@
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 void dynamicMenu(Node* Head);
-void removeMenu(Node* Head);
+void removeMenu(Node*& Head);
 void modifyMenu(Node* Head);
 
 void colorText(int colorSelect)
@@ -193,7 +193,7 @@ void menu()
 	}
 }
 
-void removeMenu(Node* Head)
+void removeMenu(Node*& Head)
 {
 	int eventsCounter = 0;
 
@@ -220,7 +220,7 @@ void removeMenu(Node* Head)
 		colorText(15);
 		int j = 0;
 
-		if (temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
+		if (temp != nullptr && temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
 		{
 			for (j; j < arrow; j++)
 			{
@@ -292,7 +292,7 @@ void removeMenu(Node* Head)
 				counter++;
 			}
 			int grayNum = grayCode::getGrayCode(temp);
-			linkedList::removeNode(temp, grayNum);
+			Head = linkedList::removeNode(temp, grayNum);
 			break;
 		}
 

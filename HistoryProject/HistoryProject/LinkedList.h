@@ -27,8 +27,8 @@ namespace linkedList
 	void addBetween(Node*, string, int, int, int);
 	void appendNode(Node*, string, int, int, int);
 	void addNode(Node*);
-	void removeGivenNode(Node*, int);
-	void removeNode(Node*, int);
+	Node* removeGivenNode(Node*, int);
+	Node* removeNode(Node*, int);
 	void modifyNode(Node*, int);
 	void modifyGivenNode(Node*, int, string, int, int, int);
 	void printNodes(Node*);

@@ -128,7 +128,7 @@ void linkedList::addNode(Node* Head)
 }
 
 //Remove given node
-void linkedList::removeGivenNode(Node* Head, int grayNum)
+Node* linkedList::removeGivenNode(Node* Head, int grayNum)
 {
 	while (Head->prev != NULL)
 	{
@@ -146,25 +146,40 @@ void linkedList::removeGivenNode(Node* Head, int grayNum)
 	if (temp != NULL && tempGrayNum == grayNum)
 	{
 		Node* tempPrev = temp->prev;
-		Head = Head->next;
-		temp->title = "";
-		temp->day = 0;
-		temp->month = 0;
-		temp->year = 0;
-		if(tempPrev != nullptr)
+		Node* tempNext = temp->next;
+		if(tempPrev == nullptr)
 		{
+			if (temp->next != nullptr) 
+			{
+				delete temp;
+				return tempNext;
+			}
+			else
+			{
+				temp->title = "";
+				temp->day = 0;
+				temp->month = 0;
+				temp->year = 0;
+			}
+		} 
+		else
+		{
+			temp->title = "";
+			temp->day = 0;
+			temp->month = 0;
+			temp->year = 0; 
 			tempPrev->next = temp->next;
-			if(temp->next != nullptr)
+			if (temp->next != nullptr)
 				temp->next->prev = tempPrev;
 		}
-		return;
 	}
+	return Head;
 }
 
 //Remove a node
-void linkedList::removeNode(Node* Head, int grayNum)
+Node* linkedList::removeNode(Node* Head, int grayNum)
 {
-	linkedList::removeGivenNode(Head, grayNum);
+	return linkedList::removeGivenNode(Head, grayNum);
 }
 
 //Modify a node
