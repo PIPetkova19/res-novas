@@ -25,7 +25,7 @@ extern string userName;
 
 namespace linkedList
 {
-	void prependNode(Node*, string, int, int, int, string);
+	Node* prependNode(Node*, string, int, int, int, string);
 	void addBetween(Node*, string, int, int, int, string);
 	void appendNode(Node*, string, int, int, int, string);
 	void addNode(Node*);
@@ -50,12 +50,4 @@ namespace grayCode
 	long long int  binToGraysCode(int);
 	int grayCodeConversion(long long);
 	int getGrayCode(Node*);
-}
-
-namespace sorting
-{
-	void swapNodes(Node*, Node*);
-	void sortIncreasing(Node*);
-	void sortDecreasing(Node*);
-	void sortAlphabetical(Node*);
 }

@@ -231,6 +231,8 @@ void removeMenu(Node*& Head)
 {
 	int eventsCounter = 0;
 
+	while (Head->prev != NULL)
+		Head = Head->prev;
 	Node* temp = Head;
 
 	int key;
@@ -471,24 +473,16 @@ void dynamicMenu(Node* Head)
 
 	int arrow = 0;
 
-	int sortArrow = 0;
-
-	string sort[3] = { "INCREASING", "DECRASING", "ALPHABETICAL" };
-
 	while (true)
 	{
-		// Go to first Node
 		temp = Head;
-
 		if (temp != nullptr)
 		{
-			while (Head->prev != NULL)
+			while (temp->prev != NULL)
 			{
-				Head = Head->prev;
+				temp = temp->prev;
 			}
 		}
-
-		temp = Head;
 
 		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
@@ -498,10 +492,6 @@ void dynamicMenu(Node* Head)
 
 		if (temp != nullptr && temp->title != "" && temp->day != 0 && temp->month != 0 && temp->year != 0)
 		{
-			colorText(7);
-			cout << setw(129) << "USE THE LEFT AND RIGHT ARROWS TO CHANGE SORTING STYLE" << endl << endl;
-			colorText(15);
-
 			for (int j = 0; j < arrow; j++)
 			{
 				cout << setw(85) << "\t  ";
@@ -532,22 +522,6 @@ void dynamicMenu(Node* Head)
 				cout << " - " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 				temp = temp->next;
-			}
-
-			cout << endl << setw(81) << "SORT BY:" << "\t";
-
-			for (int i = 0; i < sortArrow; i++)
-			{
-				cout << sort[i] << "\t";
-			}
-
-			colorText(3);
-			cout << sort[sortArrow] << "\t";
-			colorText(15);
-
-			for (int i = sortArrow + 1; i < 3; i++)
-			{
-				cout << sort[i] << "\t";
 			}
 		}
 		else
@@ -583,44 +557,6 @@ void dynamicMenu(Node* Head)
 				arrow++;
 			}
 		}
-		if (key == 75)
-		{
-			if (sortArrow == 0)
-			{
-				Beep(220, 50);
-			}
-			else
-			{
-				Beep(440, 50);
-				sortArrow--;
-			}
-		}
-		if (key == 77)
-		{
-			if (sortArrow == 2)
-			{
-				Beep(220, 50);
-			}
-			else
-			{
-				Beep(440, 50);
-				sortArrow++;
-			}
-		}
-
-		if (sortArrow == 0)
-		{
-			sorting::sortIncreasing(Head);
-		}
-		else if (sortArrow == 1)
-		{
-			sorting::sortDecreasing(Head);
-		}
-		else if (sortArrow == 2)
-		{
-			sorting::sortAlphabetical(Head);
-		}
-
 		if (key == 27)
 		{
 			break;
@@ -628,9 +564,6 @@ void dynamicMenu(Node* Head)
 
 		system("cls");
 	}
-
-	sorting::sortIncreasing(Head);
-
 	system("cls");
 }
 

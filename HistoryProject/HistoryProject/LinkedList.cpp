@@ -3,18 +3,34 @@
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
+<<<<<<< Updated upstream
 void linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
+=======
+Node* linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
+>>>>>>> Stashed changes
 {
-	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
+	if (Head != nullptr && Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
 		Head->title = userTitle;
 		Head->day = userDay;
 		Head->month = userMonth;
 		Head->year = userYear;
+<<<<<<< Updated upstream
 		return;
 	}
 	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, NULL, Head };
 	Head = newNode;
+=======
+		Head->theme = userTheme;
+		return Head;
+	}
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme, NULL, Head };
+	if (Head != NULL)
+	{
+		Head->prev = newNode;
+	}
+	return newNode;
+>>>>>>> Stashed changes
 }
 
 void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
@@ -32,24 +48,35 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear};
 
 	if (temp->next != NULL)
-		while (checkFunctions::checkBigger(temp, newNode))
+	{
+		while (checkFunctions::checkBigger(newNode, temp))
 		{
 			if (temp->next == NULL)
+			{
 				break;
+			}
 			temp = temp->next;
 		}
+	}
 
-	if (!checkFunctions::checkBigger(newNode, temp))
+	if (!checkFunctions::checkBigger(temp, newNode))
 	{
+<<<<<<< Updated upstream
 		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
+=======
+		Head = linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear, userTheme);
+>>>>>>> Stashed changes
 		return;
 	}
 
+	if (temp->prev != NULL)
+		temp = temp->prev;
 	Node* tempAddress = temp->next;
 	temp->next = newNode;
 	newNode->next = tempAddress;
-	temp->next->prev = newNode;
 	newNode->prev = temp;
+	if(tempAddress != NULL)
+		tempAddress->prev = newNode;
 }
 
 void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
@@ -116,6 +143,7 @@ void linkedList::addNode(Node* Head)
 
 	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear };
 
+<<<<<<< Updated upstream
 	if (checkFunctions::checkBigger(newNode, temp))
 	{
 		linkedList::appendNode(Head, userTitle, userDay, userMonth, userYear);
@@ -123,6 +151,21 @@ void linkedList::addNode(Node* Head)
 	else
 	{
 		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear);
+=======
+	string userTheme = selectTheme(temp);
+
+	if (checkFunctions::checkBigger(newNode, temp))
+	{
+		linkedList::appendNode(temp, userTitle, userDay, userMonth, userYear, userTheme);
+	}
+	else
+	{
+		while (temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear, userTheme);
+>>>>>>> Stashed changes
 	}
 	load();
 }
@@ -412,6 +455,7 @@ int grayCode::getGrayCode(Node* Head)
 	int dateNum = int(Head->title[0]) + Head->day;
 	int grayNum = grayCode::grayCodeConversion(dateNum);
 
+<<<<<<< Updated upstream
 	return grayNum;	
 }
 
@@ -472,4 +516,7 @@ void sorting::sortAlphabetical(Node* Head)
 		temp = tempNext;
 		tempNext = tempNext->next;
 	}
+=======
+	return grayNum;
+>>>>>>> Stashed changes
 }
