@@ -450,48 +450,45 @@ void sorting::swapNodes(Node* firstNode, Node* secondNode)
 
 void sorting::sortIncreasing(Node* Head)
 {
-	Node* temp = Head;
-	Node* tempNext = temp->next;
+	Node* tempNext = Head->next;
 
-	while (temp->next != NULL)
+	while (Head->next != NULL)
 	{
-		if (checkFunctions::checkBigger(temp, tempNext))
+		if (checkFunctions::checkBigger(Head, tempNext))
 		{
-			sorting::swapNodes(temp, tempNext);
+			sorting::swapNodes(Head, tempNext);
 		}
-		temp = tempNext;
+		Head = tempNext;
 		tempNext = tempNext->next;
 	}
 }
 
 void sorting::sortDecreasing(Node* Head)
 {
-	Node* temp = Head;
-	Node* tempNext = temp->next;
+	Node* tempNext = Head->next;
 
-	while (temp->next != NULL)
+	while (Head->next != NULL)
 	{
-		if (!checkFunctions::checkBigger(temp, tempNext))
+		if (!checkFunctions::checkBigger(Head, tempNext))
 		{
-			sorting::swapNodes(temp, tempNext);
+			sorting::swapNodes(Head, tempNext);
 		}
-		temp = tempNext;
+		Head = tempNext;
 		tempNext = tempNext->next;
 	}
 }
 
 void sorting::sortAlphabetical(Node* Head)
 {
-	Node* temp = Head;
-	Node* tempNext = temp->next;
+	Node* tempNext = Head->next;
 
-	while (temp->next != NULL)
+	while (Head->next != NULL)
 	{
-		if (temp->title[0] < tempNext->title[0])
+		if (Head->title[0] > tempNext->title[0])
 		{
-			sorting::swapNodes(temp, tempNext);
+			sorting::swapNodes(Head, tempNext);
 		}
-		temp = tempNext;
+		Head = tempNext;
 		tempNext = tempNext->next;
 	}
 }
