@@ -3,7 +3,7 @@
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
-void linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
+void linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
@@ -11,13 +11,14 @@ void linkedList::prependNode(Node* Head, string userTitle, int userDay, int user
 		Head->day = userDay;
 		Head->month = userMonth;
 		Head->year = userYear;
+		Head->theme = userTheme;
 		return;
 	}
-	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, NULL, Head };
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme, NULL, Head};
 	Head = newNode;
 }
 
-void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
+void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
 {
 	Node* temp = Head;
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
@@ -26,10 +27,11 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 		Head->day = userDay;
 		Head->month = userMonth;
 		Head->year = userYear;
+		Head->theme = userTheme;
 		return;
 	}
 
-	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear};
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme};
 
 	if (temp->next != NULL)
 		while (checkFunctions::checkBigger(temp, newNode))
@@ -41,7 +43,7 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 
 	if (!checkFunctions::checkBigger(newNode, temp))
 	{
-		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear);
+		linkedList::prependNode(Head, userTitle, userDay, userMonth, userYear, userTheme);
 		return;
 	}
 
@@ -52,7 +54,7 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 	newNode->prev = temp;
 }
 
-void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear)
+void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
 	{
@@ -60,9 +62,10 @@ void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userM
 		Head->day = userDay;
 		Head->month = userMonth;
 		Head->year = userYear;
+		Head->theme = userTheme;
 		return;
 	}
-	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, NULL, NULL };
+	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear, userTheme, NULL, NULL};
 
 	Node* temp = Head;
 	while (temp)
@@ -116,14 +119,17 @@ void linkedList::addNode(Node* Head)
 
 	Node* newNode = new Node{ userTitle, userDay, userMonth, userYear };
 
+	string userTheme = selectTheme(Head);
+
 	if (checkFunctions::checkBigger(newNode, temp))
 	{
-		linkedList::appendNode(Head, userTitle, userDay, userMonth, userYear);
+		linkedList::appendNode(Head, userTitle, userDay, userMonth, userYear, userTheme);
 	}
 	else
 	{
-		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear);
+		linkedList::addBetween(Head, userTitle, userDay, userMonth, userYear, userTheme);
 	}
+
 	load();
 }
 

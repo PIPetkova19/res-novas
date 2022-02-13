@@ -13,6 +13,34 @@ void colorText(int colorSelect)
 	SetConsoleTextAttribute(hConsole, colorSelect);
 }
 
+void colorTheme(string theme)
+{
+	if (theme == "FIRST BG KINGDOM")
+	{
+		SetConsoleTextAttribute(hConsole, 1);
+	}
+	if (theme == "SECOND BG KINGDOM")
+	{
+		SetConsoleTextAttribute(hConsole, 3);
+	}
+	if (theme == "OTTOMAN RULE")
+	{
+		SetConsoleTextAttribute(hConsole, 2);
+	}
+	if (theme == "THIRD BG KINDOM")
+	{
+		SetConsoleTextAttribute(hConsole, 5);
+	}
+	if (theme == "COMMUNISUM")
+	{
+		SetConsoleTextAttribute(hConsole, 4);
+	}
+	if (theme == "MODERN HISTORY")
+	{
+		SetConsoleTextAttribute(hConsole, 6);
+	}
+}
+
 //Display Front-End of the first page
 void title()
 {
@@ -451,20 +479,32 @@ void dynamicMenu(Node* Head)
 		{
 			for (int j = 0; j < arrow; j++)
 			{
-				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
+				cout << setw(85) << "\t  ";
+				colorTheme(temp->theme);
+				cout << temp->theme;
+				colorText(15);
+				cout << " - " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 				temp = temp->next;
 			}
 
 			colorText(2);
-			cout << setw(95) << "-->" << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
+			cout << setw(85) << "-->" << "\t  ";
+			colorTheme(temp->theme);
+			cout << temp->theme;
+			colorText(2);
+			cout << " - " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << "\t<--" << endl;
 			colorText(15);
 
 			temp = temp->next;
 
 			for (int j = arrow + 1; j < eventsCounter; j++)
 			{
-				cout << setw(95) << "\t  " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
+				cout << setw(85) << "\t  ";
+				colorTheme(temp->theme);
+				cout << temp->theme;
+				colorText(15);
+				cout << " - " << temp->title << " - " << temp->day << "/" << temp->month << "/" << temp->year << endl;
 
 				temp = temp->next;
 			}
@@ -512,6 +552,77 @@ void dynamicMenu(Node* Head)
 	}
 
 	system("cls");
+}
+
+string selectTheme(Node* Head)
+{
+	system("cls");
+
+	string themes[6] = { "FIRST BG KINGDOM" , "SECOND BG KINGDOM", "OTTOMAN RULE", "THIRD BG KINDOM", "COMMUNISUM", "MODERN HISTORY" };
+
+	int arrow = 0;
+
+	bool choose = true;
+
+	int key;
+
+	while (choose)
+	{
+		colorText(8);
+
+		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+
+		cout << setw(117) << "PLEASE SELECT A THEME" << endl << endl;
+
+		for (int i = 0; i < arrow; i++)
+		{
+			colorTheme(themes[i]);
+			cout << setw(95) << "\t  " << themes[i] << endl;
+		}
+
+		colorTheme(themes[arrow]);
+		cout << setw(95) << "-->" << "\t  " << themes[arrow] << "\t<--" << endl;
+
+		for (int i = arrow + 1; i < 6; i++)
+		{
+			colorTheme(themes[i]);
+			cout << setw(95) << "\t  " << themes[i] << endl;
+		}
+
+		key = _getch();
+
+		if (key == 72)
+		{
+			if (arrow == 0)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				Beep(440, 50);
+				arrow--;
+			}
+		}
+		if (key == 80)
+		{
+			if (arrow == 5)
+			{
+				Beep(220, 50);
+			}
+			else
+			{
+				Beep(440, 50);
+				arrow++;
+			}
+		}
+
+		if (key == 32)
+		{
+			return themes[arrow];
+		}
+
+		system("cls");
+	}
 }
 
 void load()

@@ -14,6 +14,8 @@ struct Node
 	int month = 0;
 	int year = 0;
 
+	string theme = "";
+
 	Node* prev = 0;
 	Node* next = 0;
 };
@@ -23,9 +25,9 @@ extern string userName;
 
 namespace linkedList
 {
-	void prependNode(Node*, string, int, int, int);
-	void addBetween(Node*, string, int, int, int);
-	void appendNode(Node*, string, int, int, int);
+	void prependNode(Node*, string, int, int, int, string);
+	void addBetween(Node*, string, int, int, int, string);
+	void appendNode(Node*, string, int, int, int, string);
 	void addNode(Node*);
 	Node* removeGivenNode(Node*, int);
 	Node* removeNode(Node*, int);
