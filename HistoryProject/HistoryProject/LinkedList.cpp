@@ -158,6 +158,7 @@ Node* linkedList::removeGivenNode(Node* Head, int grayNum)
 			if (temp->next != nullptr) 
 			{
 				delete temp;
+				tempNext->prev = NULL;
 				return tempNext;
 			}
 			else
