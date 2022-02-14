@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="conversion.cpp" />
     <ClCompile Include="HistoryProject.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Menu.cpp" />
