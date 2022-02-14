@@ -108,6 +108,7 @@ void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userM
 // Input the title of the event
 string inputString(string userTitle)
 {
+	// Clear one or more characters from the input buffer
 	cin.ignore(INT_MAX, '\n');
 	getline(cin, userTitle);
 	cout << endl;

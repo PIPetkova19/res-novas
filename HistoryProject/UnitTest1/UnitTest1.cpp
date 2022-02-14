@@ -71,24 +71,7 @@ namespace UnitTest1
 			Assert::AreEqual(expected, dec);
 
 		}
-		/*BEGIN_TEST_METHOD_ATTRIBUTE(expectToReturnGrayRepresentationOfBinaryNumber)
-			TEST_OWNER(L"IGVasilev19")
-			TEST_PRIORITY("High")
-			END_TEST_METHOD_ATTRIBUTE()
-			TEST_METHOD(expectToReturnGrayRepresentationOfBinaryNumber)
-		{
-			//Arrange
-			int expected = 1101;
-
-
-			//Act
-			Node* gray = getGrayCode();
-			//Assert
-
-			Assert::AreEqual(expected, gray);
-
-		}*/
-
+		
 	};
 
 }

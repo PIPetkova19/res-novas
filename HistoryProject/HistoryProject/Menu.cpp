@@ -658,6 +658,7 @@ void load()
 	{
 		colorText(2);
 		Beep(220, 200);
+		// Display symbol from the extended ascii table  
 		cout << (char)219u << " ";
 	}
 

@@ -8,6 +8,8 @@ int main()
 {  
     userName = userInfo();
     system("cls");
+
+    // Maximase window
     ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
     menu();
 }
