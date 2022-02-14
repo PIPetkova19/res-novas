@@ -3,6 +3,7 @@
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
+// Add new element at the beginning of the list
 Node* linkedList::prependNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
 {
 	if (Head != nullptr && Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
@@ -23,6 +24,7 @@ Node* linkedList::prependNode(Node* Head, string userTitle, int userDay, int use
 	return newNode;
 }
 
+// Add elemets between each other
 void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
 {
 	Node* temp = Head;
@@ -76,6 +78,7 @@ void linkedList::addBetween(Node* Head, string userTitle, int userDay, int userM
 		tempAddress->prev = newNode;
 }
 
+// Add new element at the end of the list
 void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userMonth, int userYear, string userTheme)
 {
 	if (Head->title == "" && Head->day == 0 && Head->month == 0 && Head->year == 0)
@@ -102,6 +105,7 @@ void linkedList::appendNode(Node* Head, string userTitle, int userDay, int userM
 	}
 }
 
+// Input the title of the event
 string inputString(string userTitle)
 {
 	cin.ignore(INT_MAX, '\n');
@@ -110,7 +114,7 @@ string inputString(string userTitle)
 	return userTitle;
 }
 
-
+// Enter event and choose whether to put it in the front or the back of the list
 void linkedList::addNode(Node* Head)
 {
 	string userTitle, userName;
@@ -155,7 +159,7 @@ void linkedList::addNode(Node* Head)
 	load();
 }
 
-//Remove given node
+// Remove given node
 Node* linkedList::removeGivenNode(Node* Head, int grayNum)
 {
 	while (Head->prev != NULL)
@@ -205,13 +209,13 @@ Node* linkedList::removeGivenNode(Node* Head, int grayNum)
 	return Head;
 }
 
-//Remove a node
+// Remove a node
 Node* linkedList::removeNode(Node* Head, int grayNum)
 {
 	return linkedList::removeGivenNode(Head, grayNum);
 }
 
-//Modify a node
+// Modify a node
 void linkedList::modifyNode(Node* Head, int grayNum)
 {
 	string keyTitle, keyName;
@@ -239,7 +243,7 @@ void linkedList::modifyNode(Node* Head, int grayNum)
 	modifyGivenNode(Head, grayNum, keyTitle, keyDay, keyMonth, keyYear);
 }
 
-//Modifyes a given node
+// Modifyes a given node
 void linkedList::modifyGivenNode(Node* Head, int grayNum, string keyTitle, int keyDay, int keyMonth, int keyYear)
 {
 	while (Head->prev != NULL)
@@ -265,7 +269,7 @@ void linkedList::modifyGivenNode(Node* Head, int grayNum, string keyTitle, int k
 	}
 }
 
-//Prints all dates
+// Prints all dates
 void linkedList::printNodes(Node* Head)
 {
 	while (Head != NULL)
@@ -275,16 +279,16 @@ void linkedList::printNodes(Node* Head)
 	}
 }
 
-//Checks if the date exists
+// Checks if the date exists
 int checkFunctions::checkDay(int userMonth, int userYear)
 {
 	string userDay;
 
 	while (true) {
-		//Check if the day is invalid of if there is a char
+		// Check if the day is invalid of if there is a char
 		try {
 			cin >> userDay;
-			//Checks if a year is leap or not (the first 2 lines)
+			// Checks if a year is leap or not (the first 2 lines)
 			if (((userYear % 4 != 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (stoi(userDay) > 28))
 				|| ((userYear % 4 == 0) && (userYear % 100 != 0) && (userYear % 400 != 0) && (userMonth == 2) && (stoi(userDay) > 29))
 				|| (userMonth == 1) && (stoi(userDay) > 31)
@@ -311,22 +315,22 @@ int checkFunctions::checkDay(int userMonth, int userYear)
 
 		catch (...)
 		{
-			//Change the color to gray
+			// Change the color to gray
 			colorText(8);
 			cout << endl << setw(117) << "Incorrect input" << endl << setw(108) << "   > ";
-			//Change to default color
+			// Change to default color
 			colorText(15);
 		}
 	}
 	return stoi(userDay);
 }
 
-//Checks if the date exists
+// Checks if the date exists
 int checkFunctions::checkYear()
 {
 	string userYear;
 
-	//Check if the year is invalid of if there is a char
+	// Check if the year is invalid of if there is a char
 	while (true) {
 		try {
 			cin >> userYear;
@@ -342,10 +346,10 @@ int checkFunctions::checkYear()
 
 		catch (...)
 		{
-			//Change the color to gray
+			// Change the color to gray
 			colorText(8);
 			cout << endl << setw(117) << "Incorrect input" << endl << setw(108) << "   > ";
-			//Change to default color
+			// Change to default color
 			colorText(15);
 
 		}
@@ -353,12 +357,12 @@ int checkFunctions::checkYear()
 	return stoi(userYear);
 }
 
-//Checks if the date exists
+// Checks if the date exists
 int checkFunctions::checkMonth()
 {
 	string userMonth;
 	while (true) {
-		//Check if the month is invalid of if there is a char
+		// Check if the month is invalid of if there is a char
 		try {
 			cin >> userMonth;
 			if (stoi(userMonth) > 12 || stoi(userMonth) < 1 || ((userMonth >= "A") && (userMonth <= "z")))
@@ -373,10 +377,10 @@ int checkFunctions::checkMonth()
 
 		catch (...)
 		{
-			//Change the color to gray
+			// Change the color to gray
 			colorText(8);
 			cout << endl << setw(117) << "Incorrect input" << endl << setw(108) << "   > ";
-			//Change to default color
+			// Change to default color
 			colorText(15);
 
 		}
@@ -384,7 +388,7 @@ int checkFunctions::checkMonth()
 	return stoi(userMonth);
 }
 
-//Checks whick nodes date is more recent
+// Check which event is more recent
 bool checkFunctions::checkBigger(Node* firstNode, Node* secondNode)
 {
 	if (firstNode->year > secondNode->year)
@@ -404,7 +408,7 @@ bool checkFunctions::checkBigger(Node* firstNode, Node* secondNode)
 	return 0;
 }
 
-//Convert decimal to binary
+// Convert decimal to binary
 long long int grayCode::decToBin(int dec) {
 	int bin = 0;
 	int counter = 1;
@@ -417,7 +421,7 @@ long long int grayCode::decToBin(int dec) {
 	return bin;
 }
 
-//Convert bin to Gray code
+// Convert binary to Gray code
 long long int  grayCode::binToGraysCode(int dec) {
 	long long binary, gray = 0;
 	int lastNum = 0, penultimateNum = 0, counter = 0;
@@ -428,9 +432,9 @@ long long int  grayCode::binToGraysCode(int dec) {
 		binary /= 10;
 		penultimateNum = binary % 10;
 
-		//Make XOR of both numbers
+		// Make XOR of both numbers
 		if ((lastNum ^ penultimateNum) != 0) {
-			//Pow(10, counter) makes them bigger
+			// Pow(10, counter) makes them bigger
 			gray += pow(10, counter);
 		}
 		counter++;
@@ -438,7 +442,7 @@ long long int  grayCode::binToGraysCode(int dec) {
 	return gray;
 }
 
-//Use gray code as bin and convert it to dec
+// Use gray code as binary and convert it to decimal
 int grayCode::grayCodeConversion(long long temp) {
 	long long num = grayCode::binToGraysCode(temp);
 	int sum = 0, i = 0;
@@ -451,6 +455,7 @@ int grayCode::grayCodeConversion(long long temp) {
 	return sum;
 }
 
+// Make unique gray code for the event by getting the first letter of the title and adding it to the day
 int grayCode::getGrayCode(Node* Head)
 {
 	int dateNum = int(Head->title[0]) + Head->day;

@@ -43,7 +43,7 @@ void colorTheme(string theme)
 	}
 }
 
-//Display Front-End of the first page
+// Display Front-End of the first page
 void title()
 {
 	cout << endl << endl << endl;
@@ -67,7 +67,7 @@ void title()
 	cout << endl;
 }
 
-//Input your first name 
+// Input your first name 
 string userInfo()
 {
 	title();
@@ -227,6 +227,7 @@ void menu()
 	}
 }
 
+// Add dynamic menu where you can view and delete elements
 void removeMenu(Node*& Head)
 {
 	int eventsCounter = 0;
@@ -343,6 +344,7 @@ void removeMenu(Node*& Head)
 	system("cls");
 }
 
+// Menu for editing the events
 void modifyMenu(Node* Head)
 {
 	int eventsCounter = 0;
@@ -457,6 +459,7 @@ void modifyMenu(Node* Head)
 	system("cls");
 }
 
+// Add dynamic menu where you can view add elements
 void dynamicMenu(Node* Head)
 {
 	int eventsCounter = 0;
@@ -567,6 +570,7 @@ void dynamicMenu(Node* Head)
 	system("cls");
 }
 
+// Select the theme of the event
 string selectTheme(Node* Head)
 {
 	system("cls");
