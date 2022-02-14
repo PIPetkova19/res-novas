@@ -218,7 +218,7 @@ Node* linkedList::removeNode(Node* Head, int grayNum)
 // Modify a node
 void linkedList::modifyNode(Node* Head, int grayNum)
 {
-	string keyTitle, keyName;
+	string keyTitle, keyTheme;
 	int keyDay, keyMonth, keyYear;
 
 	system("cls");
@@ -240,11 +240,13 @@ void linkedList::modifyNode(Node* Head, int grayNum)
 	cout << setw(113) << "Enter event's Day:" << endl << setw(100) << "   > ";
 	keyDay = checkFunctions::checkDay(keyMonth, keyYear);
 
-	modifyGivenNode(Head, grayNum, keyTitle, keyDay, keyMonth, keyYear);
+	keyTheme = selectTheme(Head);
+
+	modifyGivenNode(Head, grayNum, keyTitle, keyDay, keyMonth, keyYear, keyTheme);
 }
 
 // Modifyes a given node
-void linkedList::modifyGivenNode(Node* Head, int grayNum, string keyTitle, int keyDay, int keyMonth, int keyYear)
+void linkedList::modifyGivenNode(Node* Head, int grayNum, string keyTitle, int keyDay, int keyMonth, int keyYear, string keyTheme)
 {
 	while (Head->prev != NULL)
 	{
@@ -266,6 +268,7 @@ void linkedList::modifyGivenNode(Node* Head, int grayNum, string keyTitle, int k
 		temp->day = keyDay;
 		temp->month = keyMonth;
 		temp->year = keyYear;
+		temp->theme = keyTheme;
 	}
 }
 

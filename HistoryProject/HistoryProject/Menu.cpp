@@ -462,6 +462,11 @@ void modifyMenu(Node* Head)
 // Add dynamic menu where you can view add elements
 void dynamicMenu(Node* Head)
 {
+	while (Head->prev != NULL)
+	{
+		Head = Head->prev;
+	}
+
 	int eventsCounter = 0;
 
 	Node* temp = Head;
@@ -473,20 +478,19 @@ void dynamicMenu(Node* Head)
 		temp = temp->next;
 		eventsCounter++;
 	}
-
 	int arrow = 0;
+	
+	if (temp != nullptr)
+	{
+		while (Head->prev != NULL)
+		{
+			Head = Head->prev;
+		}
+	}
 
 	while (true)
 	{
 		temp = Head;
-		if (temp != nullptr)
-		{
-			while (temp->prev != NULL)
-			{
-				temp = temp->prev;
-			}
-		}
-
 		cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
 
 		colorText(7);

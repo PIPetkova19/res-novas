@@ -32,7 +32,7 @@ namespace linkedList
 	Node* removeGivenNode(Node*, int);
 	Node* removeNode(Node*, int);
 	void modifyNode(Node*, int);
-	void modifyGivenNode(Node*, int, string, int, int, int);
+	void modifyGivenNode(Node*, int, string, int, int, int, string);
 	void printNodes(Node*);
 }
 
