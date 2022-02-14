@@ -7,7 +7,7 @@
 We are making an application for registration and<br>
 management of historical events, using linked lists. <br><br>
 <a href="Documents/Presentation.pptx" >Presentation</a><br>      
-<a href="Documents/Documentation.pptx" >Documentation</a>
+<a href="Documents/Documentation.docx" >Documentation</a>
 
 # Table of contents
  
